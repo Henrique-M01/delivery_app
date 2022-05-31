@@ -1,5 +1,6 @@
 .login-page {
   height: 100vh;
+  padding: 0 25px;
 }
 
 .login-container {
@@ -12,6 +13,7 @@
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
+  width: 100%;
 }
 
 .login-form {

@@ -3,5 +3,5 @@ const userController = require('./userController');
 
 module.exports = {
   loginController,
-  userController
+  userController,
 };

@@ -7,8 +7,8 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <div className="login-container">
-        <img src={ logo } alt="Logo" />
-        <h1>Nosso app de delivery</h1>
+        <img className="embreagados" src={ logo } alt="Logo" />
+        <h1>Embreagados</h1>
         <LoginForm />
       </div>
     </div>

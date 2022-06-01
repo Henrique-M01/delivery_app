@@ -34,6 +34,7 @@ export default function LoginForm() {
           onChange={ (e) => handleChange('email', e.target.value) }
           type="email"
           id="email-input"
+          placeholder='Digite seu email'
         />
       </label>
 
@@ -44,11 +45,12 @@ export default function LoginForm() {
           onChange={ (e) => handleChange('password', e.target.value) }
           type="password"
           id="password-input"
+          placeholder='Digite sua senha'
         />
       </label>
 
-      <button type="submit">Login</button>
-      <button type="button">Ainda não tenho conta</button>
+      <button className='btn' type="submit">Login</button>
+      <button className='btn' type="button">Ainda não tenho conta</button>
     </form>
   );
 }

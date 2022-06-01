@@ -4,6 +4,7 @@ const cors = require('cors');
 const {
   loginRoute, 
   registerRoute,
+  productsRoute,
 } = require('../routes');
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use('/login', loginRoute);
 app.use('/register', registerRoute);
+app.use('/products', productsRoute);
 
 app.get('/coffee', (_req, res) => res.status(418).end());
 

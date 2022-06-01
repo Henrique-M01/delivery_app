@@ -3,23 +3,24 @@
 }
 
 .login-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  left: 50%;
   margin: 0 auto;
   max-width: 500px;
   position: absolute;
-  left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
+  width: 100%;
 }
 
 .login-form {
+  background-color: gray;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  background-color: gray;
   padding: 1rem;
+  width: 100%;
 }
 
 .login-form label {

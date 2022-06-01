@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'CollegeBlock';
+  font-family: CollegeBlock;
   src: url('/src/fonts/CollegeBlock-Mzxn.ttf');
 }
 
 body {
+  box-sizing: border-box;
+  font-family: CollegeBlock , sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'CollegeBlock';
 }

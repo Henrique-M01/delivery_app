@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const {
-  loginRoute, 
+  loginRoute,
   registerRoute,
 } = require('../routes');
 

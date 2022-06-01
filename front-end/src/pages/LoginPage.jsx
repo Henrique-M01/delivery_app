@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from '../components/login/LoginForm';
 import logo from '../images/logo.svg';
-import './login.css';
+import '../components/login/login.css';
 
 export default function LoginPage() {
   return (

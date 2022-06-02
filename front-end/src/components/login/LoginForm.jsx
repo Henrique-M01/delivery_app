@@ -30,7 +30,7 @@ function LoginForm(setUser) {
         setUser(decodeToken(res.token));
       })
       .then(() => setIsLogged(true))
-      .then(() => navigate('/produtos')) // Ainda n sei a rota correta;
+      .then(() => navigate('/produtos'))
       .catch((err) => console.log(err));
   };
 

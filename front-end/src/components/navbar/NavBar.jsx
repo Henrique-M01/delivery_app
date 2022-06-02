@@ -13,7 +13,7 @@ export default function NavBar() {
 
         <div className="flex group-2">
           <Link to="/customer/products" className="user">Sicrano da Silva</Link>
-          <Link to="/customer/products" className="logout">Sair</Link>
+          <Link to="/login" className="logout">Sair</Link>
         </div>
       </nav>
     </header>

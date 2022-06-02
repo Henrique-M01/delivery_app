@@ -7,8 +7,8 @@
 }
 
 .nav-bar {
-  justify-content: space-between;
   background-color: #036B52;
+  justify-content: space-between;
 }
 
 .nav-bar a {
@@ -23,8 +23,9 @@
 .group-2 .user {
   background-color: #421981;
 }
+
 .group-2 .user:hover {
-  background-color: #370f74;
+  background-color: #370F74;
   transition: all;
   transition-duration: 150ms;
 }
@@ -32,8 +33,9 @@
 .group-2 .logout {
   background-color: #056CF9;
 }
+
 .group-2 .logout:hover {
-  background-color: #005fe4;
+  background-color: #005FE4;
   transition: all;
   transition-duration: 150ms;
 }

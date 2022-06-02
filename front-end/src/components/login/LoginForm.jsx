@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import fetchLogin from '../../api/fetchLogin';
+import AppDeliveryContext from '../../context/AppDeliveryContext';
 
 export default function LoginForm() {
+  const { setIsLogged } = useContext(AppDeliveryContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleChange = (flag, value) => {
     if (flag === 'email') setEmail(value);
@@ -16,7 +23,11 @@ export default function LoginForm() {
       password,
     };
 
-    fetchLogin(credentials).then((res) => console.log(res));
+    fetchLogin(credentials)
+      .then((res) => localStorage.setItem('token', res.token))
+        .then(() => setIsLogged(true))
+          .then(() => navigate('/home')) // Ainda n sei a rota correta;
+          .catch((err) => console.log(err));
   };
 
   return (
@@ -50,7 +61,13 @@ export default function LoginForm() {
       </label>
 
       <button className='btn' type="submit">Login</button>
-      <button className='btn' type="button">Ainda não tenho conta</button>
+      <button
+        className='btn'
+        type="button"
+        onClick={() => navigate('/register')}
+      >
+        Ainda não tenho conta
+      </button>
     </form>
   );
 }

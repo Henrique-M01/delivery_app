@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/registerUser';
 import AppDeliveryContext from '../context/AppDeliveryContext';
+import validateRegister from '../helpers/validateRegister';
 
 export default function Register() {
   const { setIsLogged } = useContext(AppDeliveryContext);
@@ -9,13 +10,19 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validRegisterForm, setValidRegisterForm] = useState(false);
 
   const navigate = useNavigate();
 
   const register = () => {
+    const validate = validateRegister({ name, email, password });
+
+    if (!validate) return setValidRegisterForm(true);
+
     registerUser({ name, email, password })
       .then(() => setIsLogged(true))
-      .then(() => navigate('/home'));
+      .then(() => navigate('/home'))
+      .catch(() => setValidRegisterForm(true));
   };
 
   return (
@@ -66,6 +73,15 @@ export default function Register() {
         >
           Cadastrar
         </button>
+        {validRegisterForm
+          && (
+            <span
+              role="alert"
+              data-testid="common_register__element-invalid_register"
+            >
+              Dados invalidos, confira-os e tente novamente
+            </span>
+          )}
       </form>
     </div>
   );

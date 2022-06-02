@@ -40,7 +40,7 @@ export default function LoginForm() {
     const validate = validateLogin({ email, password });
 
     if (validate) setDisable(false);
-  }
+  };
 
   return (
     <form

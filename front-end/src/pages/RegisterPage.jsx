@@ -31,6 +31,7 @@ export default function Register() {
           Nome:
           <input
             id="name-input"
+            data-testid="common_register__input-name"
             placeholder="Digite seu nome"
             type="text"
             value={ name }
@@ -42,6 +43,7 @@ export default function Register() {
           <input
             id="email-input"
             placeholder="Digite seu email"
+            data-testid="common_register__input-email"
             type="email"
             value={ email }
             onChange={ (e) => setEmail(e.target.value) }
@@ -52,12 +54,18 @@ export default function Register() {
           <input
             id="password-input"
             placeholder="Digite sua senha"
+            data-testid="common_register__input-password"
             type="password"
             value={ password }
             onChange={ (e) => setPassword(e.target.value) }
           />
         </label>
-        <button type="submit">Cadastrar</button>
+        <button
+          type="submit"
+          data-testid="common_register__button-register"
+        >
+          Cadastrar
+        </button>
       </form>
     </div>
   );

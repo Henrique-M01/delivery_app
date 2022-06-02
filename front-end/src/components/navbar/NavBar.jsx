@@ -1,21 +1,31 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css';
 
-export default function NavBar() {
+export default function NavBar({ userRole }) {
   return (
-    <header className="header">
-      <nav className="flex nav-bar">
-        <div className="flex group-1">
-          <Link to="/customer/products">Produtos</Link>
-          <Link to="/customer/products">Meus pedidos</Link>
-        </div>
+    <nav className="flex nav-bar">
+      <div className="flex group-1">
+        {userRole === 'seller' && (
+          <Link to="/customer/products" className="group-1-link">
+            Pedidos
+          </Link>
+        )}
+        {userRole === 'admin' && (
+          <Link to="/customer/products" className="group-1-link">
+            Gerenciar usuários
+          </Link>
+        )}
+      </div>
 
-        <div className="flex group-2">
-          <Link to="/customer/products" className="user">Sicrano da Silva</Link>
-          <Link to="/login" className="logout">Sair</Link>
-        </div>
-      </nav>
-    </header>
+      <div className="flex group-2">
+        <Link to="/customer/products" className="user">Sicrano da Silva</Link>
+        <Link to="/login" className="logout">Sair</Link>
+      </div>
+    </nav>
   );
 }
+
+NavBar.propTypes = {
+  userRole: PropTypes.string.isRequired,
+};

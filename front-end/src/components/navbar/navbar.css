@@ -1,5 +1,6 @@
 :root {
   --primary-green: #036b52;
+  --secondary-green: #2fc18c;
   --primary-purple: #421981;
   --primary-blue: #056cf9;
 }
@@ -24,6 +25,11 @@
 
 .group-1 a, .group-2 a {
   padding: 1rem;
+}
+
+.group-1-link:hover {
+  background-color: var(--secondary-green);
+  transition: 150ms;
 }
 
 .group-2 .user {

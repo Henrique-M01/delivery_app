@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react';
+import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import fetchLogin from '../../api/fetchLogin';
+import { setNewUser } from '../../redux/actions';
+import fetchLogin from '../../api/fetchLogin';
 import AppDeliveryContext from '../../context/AppDeliveryContext';
+import decodeToken from '../../utils/decodeToken';
 
-export default function LoginForm() {
+function LoginForm(setUser) {
   const { setIsLogged } = useContext(AppDeliveryContext);
 
   const [email, setEmail] = useState('');
@@ -24,7 +27,10 @@ export default function LoginForm() {
     setIsLogged(true);
     navigate('/produtos');
     // fetchLogin(credentials)
-    //   .then((res) => localStorage.setItem('token', res.token))
+    //   .then((res) => {
+    //     localStorage.setItem('token', res.token);
+    //     setUser(decodeToken(res.token));
+    //   })
     //   .then(() => setIsLogged(true))
     //   .then(() => navigate('/home')) // Ainda n sei a rota correta;
     //   .catch((err) => console.log(err));
@@ -71,3 +77,9 @@ export default function LoginForm() {
     </form>
   );
 }
+
+mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setNewUser(user)),
+});
+
+export default connect()(LoginForm);

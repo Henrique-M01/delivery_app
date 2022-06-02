@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/registerUser';
 import AppDeliveryContext from '../context/AppDeliveryContext';
@@ -15,20 +15,20 @@ export default function Register() {
   const register = () => {
     registerUser({ name, email, password })
       .then(() => setIsLogged(true))
-        .then(() => navigate('/home'))
-  }
+      .then(() => navigate('/home'));
+  };
 
   return (
     <div>
       <h1>Cadrastre-se</h1>
       <form
-        onSubmit={(e) => {
+        onSubmit={ (e) => {
           e.preventDefault();
           register();
-        }}
+        } }
       >
         <label htmlFor="name-input">
-          Nome: 
+          Nome:
           <input
             id="name-input"
             type="text"
@@ -37,7 +37,7 @@ export default function Register() {
           />
         </label>
         <label htmlFor="email-input">
-          Email: 
+          Email:
           <input
             id="email-input"
             type="email"
@@ -46,7 +46,7 @@ export default function Register() {
           />
         </label>
         <label htmlFor="password-input">
-          Senha: 
+          Senha:
           <input
             id="password-input"
             type="password"
@@ -54,8 +54,8 @@ export default function Register() {
             onChange={ (e) => setPassword(e.target.value) }
           />
         </label>
-        <button>Cadastrar</button>
+        <button type="submit">Cadastrar</button>
       </form>
     </div>
-  )
+  );
 }

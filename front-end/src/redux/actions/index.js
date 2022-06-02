@@ -1,6 +1,7 @@
 export const ADD_ORDER = 'ADD_ORDER';
 export const SET_ORDERS = 'SET_ORDERS';
 export const SET_USER = 'SET_USER';
+export const SET_TOKEN = 'SET_TOKEN';
 
 export const setNewOrder = (payload) => ({
   type: ADD_ORDER,
@@ -13,6 +14,11 @@ export const setOrders = (payload) => ({
 });
 
 export const setNewUser = (payload) => ({
-  type: SET_USERS,
+  type: SET_USER,
+  payload,
+});
+
+export const setToken = (payload) => ({
+  type: SET_TOKEN,
   payload,
 });

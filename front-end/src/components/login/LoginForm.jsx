@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React, { useState, useContext } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setNewUser } from '../../redux/actions';
-import fetchLogin from '../../api/fetchLogin';
+import { setNewUser, setToken } from '../../redux/actions';
 import AppDeliveryContext from '../../context/AppDeliveryContext';
 import decodeToken from '../../utils/decodeToken';
+import fetchLogin from '../../api/fetchLogin';
 import validateLogin from '../../helpers/validateLogin';
 
-function LoginForm(setUser) {
+function LoginForm({ setUser, setTokenState }) {
   const { setIsLogged } = useContext(AppDeliveryContext);
 
   const [email, setEmail] = useState('');
@@ -33,7 +34,7 @@ function LoginForm(setUser) {
 
     fetchLogin(credentials)
       .then((res) => {
-        localStorage.setItem('token', res.token);
+        setTokenState(res.token);
         setUser(decodeToken(res.token));
       })
       .then(() => setIsLogged(true))
@@ -99,8 +100,14 @@ function LoginForm(setUser) {
   );
 }
 
-mapDispatchToProps = (dispatch) => ({
-  setUser: (user) => dispatch(setNewUser(user)),
+LoginForm.propTypes = {
+  setUser: PropTypes.func.isRequired,
+  setTokenState: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (state) => dispatch(setNewUser(state)),
+  setTokenState: (token) => dispatch(setToken(token)),
 });
 
-export default connect()(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginForm);

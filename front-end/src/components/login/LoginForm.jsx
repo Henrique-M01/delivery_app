@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import fetchLogin from '../../api/fetchLogin';
 import AppDeliveryContext from '../../context/AppDeliveryContext';
 
@@ -25,9 +24,9 @@ export default function LoginForm() {
 
     fetchLogin(credentials)
       .then((res) => localStorage.setItem('token', res.token))
-        .then(() => setIsLogged(true))
-          .then(() => navigate('/home')) // Ainda n sei a rota correta;
-          .catch((err) => console.log(err));
+      .then(() => setIsLogged(true))
+      .then(() => navigate('/home')) // Ainda n sei a rota correta;
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -45,7 +44,7 @@ export default function LoginForm() {
           onChange={ (e) => handleChange('email', e.target.value) }
           type="email"
           id="email-input"
-          placeholder='Digite seu email'
+          placeholder="Digite seu email"
         />
       </label>
 
@@ -56,15 +55,15 @@ export default function LoginForm() {
           onChange={ (e) => handleChange('password', e.target.value) }
           type="password"
           id="password-input"
-          placeholder='Digite sua senha'
+          placeholder="Digite sua senha"
         />
       </label>
 
-      <button className='btn' type="submit">Login</button>
+      <button className="btn" type="submit">Login</button>
       <button
-        className='btn'
+        className="btn"
         type="button"
-        onClick={() => navigate('/register')}
+        onClick={ () => navigate('/register') }
       >
         Ainda não tenho conta
       </button>

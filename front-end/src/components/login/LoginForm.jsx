@@ -10,6 +10,7 @@ export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [sucssesLogin, setSucssesLogin] = useState(false);
+  const [disable, setDisable] = useState(true);
 
   const navigate = useNavigate();
 
@@ -24,9 +25,9 @@ export default function LoginForm() {
       password,
     };
 
-    const validate = validateLogin(credentials);
+    const validate = validateLogin({ email, password });
 
-    if (!validate) return setSucssesLogin(true);
+    if (!validate) setSucssesLogin(true);
 
     fetchLogin(credentials)
       .then((res) => localStorage.setItem('token', res.token))
@@ -35,12 +36,19 @@ export default function LoginForm() {
       .catch(() => setSucssesLogin(true));
   };
 
+  const enableButton = () => {
+    const validate = validateLogin({ email, password });
+
+    if (validate) setDisable(false);
+  }
+
   return (
     <form
       onSubmit={ (e) => {
         e.preventDefault();
         loginSubmit();
       } }
+      onChange={ enableButton }
       className="login-form"
     >
       <label htmlFor="email-input">
@@ -68,6 +76,7 @@ export default function LoginForm() {
       </label>
 
       <button
+        disabled={ disable }
         className="btn"
         type="submit"
         data-testid="common_login__button-login"

@@ -12,7 +12,7 @@ export default function AppDeliveryProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLogged) navigate('/login');
+    // if (!isLogged) navigate('/login');
   }, []);
 
   return (

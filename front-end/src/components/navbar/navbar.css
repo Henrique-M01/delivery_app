@@ -1,0 +1,39 @@
+.header {
+  width: 100vw;
+}
+
+.flex {
+  display: flex;
+}
+
+.nav-bar {
+  justify-content: space-between;
+  background-color: #036B52;
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+}
+
+.group-1 a, .group-2 a {
+  padding: 1rem;
+}
+
+.group-2 .user {
+  background-color: #421981;
+}
+.group-2 .user:hover {
+  background-color: #370f74;
+  transition: all;
+  transition-duration: 150ms;
+}
+
+.group-2 .logout {
+  background-color: #056CF9;
+}
+.group-2 .logout:hover {
+  background-color: #005fe4;
+  transition: all;
+  transition-duration: 150ms;
+}

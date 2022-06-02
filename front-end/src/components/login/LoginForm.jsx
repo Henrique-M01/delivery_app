@@ -20,20 +20,18 @@ function LoginForm(setUser) {
   };
 
   const loginSubmit = () => {
-    // const credentials = {
-    //   email,
-    //   password,
-    // };
-    setIsLogged(true);
-    navigate('/produtos');
-    // fetchLogin(credentials)
-    //   .then((res) => {
-    //     localStorage.setItem('token', res.token);
-    //     setUser(decodeToken(res.token));
-    //   })
-    //   .then(() => setIsLogged(true))
-    //   .then(() => navigate('/home')) // Ainda n sei a rota correta;
-    //   .catch((err) => console.log(err));
+    const credentials = {
+      email,
+      password,
+    };
+    fetchLogin(credentials)
+      .then((res) => {
+        localStorage.setItem('token', res.token);
+        setUser(decodeToken(res.token));
+      })
+      .then(() => setIsLogged(true))
+      .then(() => navigate('/produtos')) // Ainda n sei a rota correta;
+      .catch((err) => console.log(err));
   };
 
   return (

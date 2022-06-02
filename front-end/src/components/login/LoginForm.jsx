@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import fetchLogin from '../../api/fetchLogin';
+// import fetchLogin from '../../api/fetchLogin';
 import AppDeliveryContext from '../../context/AppDeliveryContext';
 
 export default function LoginForm() {
@@ -17,16 +17,17 @@ export default function LoginForm() {
   };
 
   const loginSubmit = () => {
-    const credentials = {
-      email,
-      password,
-    };
-
-    fetchLogin(credentials)
-      .then((res) => localStorage.setItem('token', res.token))
-      .then(() => setIsLogged(true))
-      .then(() => navigate('/home')) // Ainda n sei a rota correta;
-      .catch((err) => console.log(err));
+    // const credentials = {
+    //   email,
+    //   password,
+    // };
+    setIsLogged(true);
+    navigate('/produtos');
+    // fetchLogin(credentials)
+    //   .then((res) => localStorage.setItem('token', res.token))
+    //   .then(() => setIsLogged(true))
+    //   .then(() => navigate('/home')) // Ainda n sei a rota correta;
+    //   .catch((err) => console.log(err));
   };
 
   return (

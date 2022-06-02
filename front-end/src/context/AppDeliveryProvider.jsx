@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import PropTypes from 'prop-types';
 
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppDeliveryContext from './AppDeliveryContext';
@@ -17,7 +17,7 @@ export default function AppDeliveryProvider({ children }) {
 
   return (
     <AppDeliveryContext.Provider value={ VALUE }>
-      {children}
+      { children }
     </AppDeliveryContext.Provider>
   );
 }

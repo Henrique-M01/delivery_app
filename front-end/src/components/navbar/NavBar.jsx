@@ -15,7 +15,7 @@ export default function NavBar({ userRole }) {
             Pedidos
           </Link>
         )}
-        {userRole === 'admin' && (
+        {userRole === 'administrator' && (
           <Link
             to="/customer/products"
             className="group-1-link"

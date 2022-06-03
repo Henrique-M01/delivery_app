@@ -63,9 +63,32 @@
   width: 100%;
 }
 
+.button-section button {
+  background-color: rgba(125, 156, 192, 0.678);
+  border: 1px solid rgba(18, 20, 24, 0.678);
+  height: 20px;
+  width: 25px;
+}
+
+.button-section button:hover {
+  background-color: rgba(125, 156, 192, 0.678);
+}
+
+
+.button-left {
+  border-radius: 10px 0 0 10px;
+}
+
+.button-right {
+  border-radius: 0 10px 10px 0;
+}
+
 .card-input {
-  border-radius: 5px;
+  border: 1px solid rgba(18, 20, 24, 0.678);
+  border-left: none;
+  border-right: none;
   font-family: Montserrat , sans-serif;
+  height: 20px;
   text-align: center;
-  width: 50px;
+  width: 30px;
 }

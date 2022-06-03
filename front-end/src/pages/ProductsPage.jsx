@@ -25,11 +25,11 @@ function ProductsPage() {
       <Header />
       <section className="products">
         {
-          productsState && productsState.map(({ id, image, name, price }) => (
+          productsState && productsState.map(({ id, urlImage, name, price }) => (
             <Product
               key={ id }
               className="product"
-              image={ image }
+              image={ urlImage }
               name={ name }
               price={ price }
               id={ id }

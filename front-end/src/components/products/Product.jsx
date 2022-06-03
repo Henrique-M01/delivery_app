@@ -12,7 +12,9 @@ export default function Product({ id, name, image, price }) {
       <div className="footer-section">
         <p>{ name }</p>
         <div className="button-section">
+          <button type="button" className="button-left">-</button>
           <input type="text" className="card-input" />
+          <button type="button" className="button-right">+</button>
         </div>
       </div>
     </div>
@@ -22,6 +24,6 @@ export default function Product({ id, name, image, price }) {
 Product.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
 };

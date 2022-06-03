@@ -96,6 +96,8 @@ function LoginForm({ setUser, setTokenState }) {
           >
             Email ou senha invalidos
           </span>)}
+      <button className="btn" type="submit">Login</button>
+      <button className="btn" type="button">Ainda não tenho conta</button>
     </form>
   );
 }

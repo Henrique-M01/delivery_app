@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Product({ id, name, image, price }) {
   return (
-    <div className="product">
+    <div className="product" id={ id }>
       <span className="product-price">
         {`R$ ${price
           .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}

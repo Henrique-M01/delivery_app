@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
@@ -13,6 +12,7 @@ function AppDeliveryProvider({ children, isLoggedIn }) {
 
   useEffect(() => {
     if (!isLogged) navigate('/login');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

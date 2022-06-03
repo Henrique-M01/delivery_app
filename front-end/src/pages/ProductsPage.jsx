@@ -30,4 +30,10 @@ function ProductsPage() {
   );
 }
 
-export default connect(null, null)(ProductsPage);
+const mapStateToProps = (state) => ({
+  products: state.products,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);

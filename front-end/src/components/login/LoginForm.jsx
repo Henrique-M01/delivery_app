@@ -1,5 +1,4 @@
-
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -17,11 +16,15 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-      const validate = validateLogin({ email, password });
-  
-      validate ? setDisable(false) : setDisable(true);
-  }, [email, password])
-   
+    const validate = validateLogin({ email, password });
+
+    if (validate) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [email, password]);
+
   useEffect(() => {
     setUser({});
     setTokenState('');

@@ -18,8 +18,12 @@ export default function Register() {
   useEffect(() => {
     const validate = validateRegister({ email, password, name });
 
-    validate ? setDisable(false) : setDisable(true);
-  }, [email, password, name])
+    if (validate) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [email, password, name]);
 
   const register = () => {
     const validate = validateRegister({ name, email, password });
@@ -28,10 +32,10 @@ export default function Register() {
 
     registerUser({ name, email, password })
       .then(() => {
-        setIsLogged(true)
-        navigate('/customer/products')
+        setIsLogged(true);
+        navigate('/customer/products');
       })
-      .catch((err) => setValidRegisterForm(true));
+      .catch(() => setValidRegisterForm(true));
   };
 
   return (
@@ -77,7 +81,7 @@ export default function Register() {
           />
         </label>
         <button
-        disabled={ disable }
+          disabled={ disable }
           type="submit"
           data-testid="common_register__button-register"
         >

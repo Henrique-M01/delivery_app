@@ -2,30 +2,31 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 
 const server = require('../../api/app');
-const { 
+/* const { 
   newProduct,
   validSeller,
   invalidNewProduct,
   validUpdateProduct
 } = require('../mocks/productsMocks');
-const { validUser } = require('../mocks/loginMocks');
+const { validUser } = require('../mocks/loginMocks'); */
 
 chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
+describe('INTEGRATION TEST - Products Route - ENDPOINT /products', () => {
   let response = {};
 
-  describe('1) - Create a new product', async () => {
+  /* describe('1) - Create a new product', () => {
     describe('1) - When Sucess', () => {
       before(async () => {
-        const seller  = await chai
+        const seller = await chai
           .request(server)
           .post('/login')
           .send(validSeller);
 
         const { token } = seller.body;
+
         response = await chai
           .request(server)
           .post('/products')
@@ -33,7 +34,7 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
           .send(newProduct);
       });
 
-      it('1) - should return a status code of 200', async () => {
+      it('1) - should return a status code of 201', async () => {
         expect(response).to.have.status(201);
       });
 
@@ -41,7 +42,7 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         expect(response.body).to.be.a('object');
       });
 
-      it('3) - should return a object with a token', async () => {
+      it('3) - should return a object with the created product', async () => {
         expect(response.body).to.have.all.keys([
           'id',
           'name',
@@ -55,8 +56,8 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
       });
     });
 
-    describe('2) - When Fail', async () => {
-      describe('1) - When trying to create the product without the token', async () => {
+    describe('2) - When Fail', () => {
+      describe('1) - When trying to create the product without the token', () => {
         before(async () => {
           response = await chai
             .request(server)
@@ -79,7 +80,7 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         });
       })
 
-      describe('2) - When trying to create the product with an invalid token', async () => {
+      describe('2) - When trying to create the product with an invalid token', () => {
         before(async () => {
           response = await chai
             .request(server)
@@ -103,7 +104,7 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         });
       });
 
-      describe('3) - When trying to create the product with an invalid permission', async () => {
+      describe('3) - When trying to create the product with an invalid permission', () => {
         before(async () => {
           const user  = await chai
             .request(server)
@@ -134,7 +135,7 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         });
       });
 
-      describe('4) - When trying to create the product with an invalid fiel', async () => {
+      describe('4) - When trying to create the product with an invalid fiel', () => {
         before(async () => {
           const seller  = await chai
             .request(server)
@@ -165,9 +166,9 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         });
       });
     });
-  });
+  }); */
 
-  describe('2) - Read all products', async () => {
+  describe('1) - Read all products', () => {
     describe('1) - When Sucess', async () => {
       before(async () => {
         response = await chai
@@ -194,8 +195,8 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
     });
   });
 
-  describe('3) - Update a product', async () => {
-    describe('1) - When Sucess', async () => {
+  /* describe('3) - Update a product', () => {
+    describe('1) - When Sucess', () => {
       before(async () => {
         const seller  = await chai
           .request(server)
@@ -226,8 +227,8 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
       });
     });
 
-    describe('2) - When Fail', async () => {
-      describe('1) - When trying to update the product without the token', async () => {
+    describe('2) - When Fail', () => {
+      describe('1) - When trying to update the product without the token', () => {
         before(async () => {
           response = await chai
             .request(server)
@@ -250,7 +251,7 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         });
       });
 
-      describe('2 - When dont exist the product', async () => {
+      describe('2 - When dont exist the product', () => {
         before(async () => {
           const seller  = await chai
             .request(server)
@@ -281,9 +282,9 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         });
       });
     })
-  });
+  }); */
 
-  describe('4) - Delete a product', async () => {
+  /* describe('4) - Delete a product', () => {
     describe('1) - When Sucess', () => {
       before(async () => {
         const seller  = await chai
@@ -314,8 +315,8 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
       });
     });
 
-    describe('2) - When Fail', async () => {
-      describe('1) - When trying to update the product without the token', async () => {
+    describe('2) - When Fail', () => {
+      describe('1) - When trying to update the product without the token', () => {
         before(async () => {
           response = await chai
             .request(server)
@@ -338,7 +339,7 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         });
       });
 
-      describe('2 - When dont exist the product', async () => {
+      describe('2 - When dont exist the product', () => {
         before(async () => {
           const seller  = await chai
             .request(server)
@@ -369,5 +370,5 @@ describe('INTEGRATION TEST - Products Route - ENDPOINT /products', async () => {
         });
       });
     })
-  });
+  }); */
 });

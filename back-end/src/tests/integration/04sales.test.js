@@ -9,11 +9,11 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('INTEGRATION TEST - Sales Route - ENDPOINT /sale', async () => {
+describe('INTEGRATION TEST - Sales Route - ENDPOINT /sale', () => {
   let response = {};
 
-  describe('1) - Create a new Sale', async () => {
-    describe('1) - When When Sucess', async () => {
+  describe('1) - Create a new Sale', () => {
+    describe('1) - When When Sucess', () => {
       before(async () => {
         const seller  = await chai
           .request(server)
@@ -52,8 +52,8 @@ describe('INTEGRATION TEST - Sales Route - ENDPOINT /sale', async () => {
       });
     });
 
-    describe('2) - When When Fail', async () => {
-      describe('1) - When trying to create the product without the token', async () => {
+    describe('2) - When When Fail', () => {
+      describe('1) - When trying to create the product without the token', () => {
         before(async () => {
           response = await chai
             .request(server)
@@ -76,7 +76,7 @@ describe('INTEGRATION TEST - Sales Route - ENDPOINT /sale', async () => {
         });
       });
 
-      describe('2) - When trying to create the product with an invalid fiel', async () => {
+      describe('2) - When trying to create the product with an invalid fiel', () => {
         before(async () => {
           const seller  = await chai
             .request(server)
@@ -109,8 +109,8 @@ describe('INTEGRATION TEST - Sales Route - ENDPOINT /sale', async () => {
     });
   });
 
-  describe('2) - Get all Sales', async () => {
-    describe('1) - When When Sucess', async () => {
+  describe('2) - Get all Sales', () => {
+    describe('1) - When When Sucess', () => {
       before(async () => {
         const customer  = await chai
           .request(server)
@@ -119,9 +119,15 @@ describe('INTEGRATION TEST - Sales Route - ENDPOINT /sale', async () => {
 
         const { token } = customer.body;
 
+        await chai
+          .request(server)
+          .post('/sales')
+          .set('Authorization', token)
+          .send(validSale);
+      
         response = await chai
           .request(server)
-          .get('/sales/3')
+          .get('/sales/3?role=userId')
           .set('Authorization', token);
       });
 
@@ -148,8 +154,8 @@ describe('INTEGRATION TEST - Sales Route - ENDPOINT /sale', async () => {
       });
     });
 
-    describe('2) - When When Fail', async () => {
-      describe('1) - When trying to get the products without the token', async () => {
+    describe('2) - When When Fail', () => {
+      describe('1) - When trying to get the products without the token', () => {
         before(async () => {
           response = await chai
             .request(server)

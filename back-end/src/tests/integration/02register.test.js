@@ -1,7 +1,9 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const shell = require('shelljs');
 
 const server = require('../../api/app');
+
 const {
   newUser,
   invalidNewUser,
@@ -12,18 +14,19 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('INTEGRATION TEST - Register Route - ENDPOINT /register', async () => {
+describe('INTEGRATION TEST - Register Route - ENDPOINT /register', () => {
   let response = {};
 
-  describe('1) - When Sucess', async () => {
+  describe('1) - When Sucess', () => {
     before(async () => {
       response = await chai
         .request(server)
         .post('/register')
         .send(newUser);
+      // console.log(response);
     });
 
-    it('1) - should return a status code of 200', async () => {
+    it('1) - should return a status code of 201', async () => {
       expect(response).to.have.status(201);
     });
 
@@ -37,8 +40,8 @@ describe('INTEGRATION TEST - Register Route - ENDPOINT /register', async () => {
     });
   });
 
-  describe('2) - When Fail', async () => {
-    describe('1) - If User already exists', async () => {
+  describe('2) - When Fail', () => {
+    describe('1) - If User already exists', () => {
       before(async () => {
         response = await chai
           .request(server)
@@ -60,7 +63,7 @@ describe('INTEGRATION TEST - Register Route - ENDPOINT /register', async () => {
       })
     });
 
-    describe('2) - If body have invalid fields', async () => {
+    describe('2) - If body have invalid fields', () => {
       before(async () => {
         response = await chai
           .request(server)
@@ -83,4 +86,3 @@ describe('INTEGRATION TEST - Register Route - ENDPOINT /register', async () => {
     });
   });
 });
-

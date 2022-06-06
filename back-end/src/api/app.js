@@ -4,7 +4,7 @@ const cors = require('cors');
 require('express-async-errors');
 
 const {
-  loginRoute, 
+  loginRoute,
   registerRoute,
   productsRoute,
   sellersRoute,

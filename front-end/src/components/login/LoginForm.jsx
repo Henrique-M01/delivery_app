@@ -82,9 +82,10 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
           value={ password }
           data-testid="common_login__input-password"
           onChange={ (e) => handleChange('password', e.target.value) }
-          type="text"
+          type="password"
           id="password-input"
           placeholder="Digite sua senha"
+          className="password-input"
         />
       </label>
 

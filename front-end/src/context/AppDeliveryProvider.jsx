@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -17,7 +18,6 @@ function AppDeliveryProvider({ children, isLoggedIn }) {
 
   useEffect(() => {
     if (!isLogged) navigate('/login');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     if (!isLogged && location.pathname !== '/register') navigate('/login');
   }, []);
 

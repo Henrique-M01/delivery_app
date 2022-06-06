@@ -11,6 +11,10 @@ function AppDeliveryProvider({ children, isLoggedIn }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setIsLogged(isLoggedIn);
+  }, [isLoggedIn]);
+
+  useEffect(() => {
     if (!isLogged) navigate('/login');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

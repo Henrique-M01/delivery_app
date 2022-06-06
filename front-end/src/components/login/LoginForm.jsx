@@ -38,7 +38,6 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
 
     fetchLogin(credentials)
       .then((res) => {
-        console.log(res.token);
         setTokenState(res.token);
         setUser(decodeToken(res.token));
       })

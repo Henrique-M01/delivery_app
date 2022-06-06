@@ -8,12 +8,8 @@ import Product from '../components/products/Product';
 import '../components/products/products.css';
 
 function ProductsPage({ setProducts, reduxProducts }) {
-  const [productsState, setProductsState] = React.useState();
-
   useEffect(() => {
     fetchProducts().then((products) => {
-      console.log(products);
-      setProductsState(products);
       setProducts(products.map((product) => ({
         ...product,
         quantity: 0,

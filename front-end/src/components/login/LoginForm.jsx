@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setNewUser, setToken, setIsLoggedIn } from '../../redux/actions';
@@ -14,6 +14,16 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
   const [disable, setDisable] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const validate = validateLogin({ email, password });
+
+    if (validate) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [email, password]);
 
   useEffect(() => {
     setUser({});
@@ -46,19 +56,12 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
       .catch(() => setSucssesLogin(true));
   };
 
-  const enableButton = () => {
-    const validate = validateLogin({ email, password });
-
-    if (validate) setDisable(false);
-  };
-
   return (
     <form
       onSubmit={ (e) => {
         e.preventDefault();
         loginSubmit();
       } }
-      onChange={ enableButton }
       className="login-form"
     >
       <label htmlFor="email-input">
@@ -79,7 +82,7 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
           value={ password }
           data-testid="common_login__input-password"
           onChange={ (e) => handleChange('password', e.target.value) }
-          type="password"
+          type="text"
           id="password-input"
           placeholder="Digite sua senha"
         />
@@ -87,7 +90,7 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
 
       <button
         disabled={ disable }
-        className="btn"
+        className="btn login-btn"
         type="submit"
         data-testid="common_login__button-login"
       >

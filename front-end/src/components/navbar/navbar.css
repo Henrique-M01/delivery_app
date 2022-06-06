@@ -37,23 +37,23 @@
 }
 
 .group-1 h1 {
+  align-items: center;
   background-color: var(--secondary-green);
   color: white;
-  font-size: 1rem;
   display: flex;
-  align-items: center;
-  padding: 0 1rem;
+  font-size: 1rem;
   font-weight: 500;
+  padding: 0 1rem;
 }
 
 .group-2 .user {
+  align-items: center;
   background-color: var(--primary-purple);
   color: white;
-  font-size: 1rem;
   display: flex;
-  align-items: center;
-  padding: 0 1rem;
+  font-size: 1rem;
   font-weight: 500;
+  padding: 0 1rem;
 }
 
 .group-2 .logout {

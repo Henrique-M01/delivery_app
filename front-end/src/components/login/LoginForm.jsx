@@ -48,11 +48,15 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
 
     fetchLogin(credentials)
       .then((res) => {
+        const decodedToken = decodeToken(res.token);
         setTokenState(res.token);
-        setUser(decodeToken(res.token));
+        setIsLogged(true);
+        setUser(decodedToken);
+
+        if (decodedToken.role === 'customer') navigate('/customer/products');
+        if (decodedToken.role === 'seller') navigate('/seller/orders');
+        if (decodedToken.role === 'administrator') navigate('/admin/manage');
       })
-      .then(() => setIsLogged(true))
-      .then(() => navigate('/customer/products'))
       .catch(() => setSucssesLogin(true));
   };
 

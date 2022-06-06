@@ -31,18 +31,29 @@
   padding: 1rem;
 }
 
-.group-1-link:hover {
+.group-1 a:hover {
   background-color: var(--secondary-green);
   transition: 150ms;
 }
 
-.group-2 .user {
-  background-color: var(--primary-purple);
+.group-1 h1 {
+  background-color: var(--secondary-green);
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-weight: 500;
 }
 
-.group-2 .user:hover {
-  background-color: #370f74;
-  transition: 150ms;
+.group-2 .user {
+  background-color: var(--primary-purple);
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-weight: 500;
 }
 
 .group-2 .logout {

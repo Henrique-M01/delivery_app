@@ -5,13 +5,13 @@ import CustomerNavBar from './CustomerNavBar';
 import NavBar from './NavBar';
 import './navbar.css';
 
-function Header({ user: { role } }) {
+function Header({ user: { role, name } }) {
   return (
     <header className="header">
       {
         role === 'customer'
-          ? <CustomerNavBar />
-          : <NavBar userRole={ role } />
+          ? <CustomerNavBar userName={ name } />
+          : <NavBar userRole={ role } userName={ name } />
       }
     </header>
   );
@@ -20,6 +20,7 @@ function Header({ user: { role } }) {
 Header.propTypes = {
   user: PropTypes.shape({
     role: PropTypes.string,
+    name: PropTypes.string,
   }).isRequired,
 };
 

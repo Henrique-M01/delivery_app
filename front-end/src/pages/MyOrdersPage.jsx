@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '../components/navbar/Header';
 
-export default function OrdersPage() {
+export default function MyOrdersPage() {
   return (
     <div>
       <Header />
-      OrdersPage
+      MyOrders
     </div>
   );
 }

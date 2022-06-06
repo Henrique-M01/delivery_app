@@ -77,7 +77,7 @@ export default function LoginForm() {
 
       <button
         disabled={ disable }
-        className="btn"
+        className="btn login-btn"
         type="submit"
         data-testid="common_login__button-login"
       >

@@ -9,6 +9,8 @@ const {
   productsRoute,
   sellersRoute,
   salesRoute,
+  deliveryRoute,
+  usersRoute,
 } = require('../routes');
 
 const {
@@ -27,6 +29,8 @@ app.use('/register', registerRoute);
 app.use('/products', productsRoute);
 app.use('/sellers', sellersRoute);
 app.use('/sales', salesRoute);
+app.use('/delivery', deliveryRoute);
+app.use('/users', usersRoute);
 
 app.use(jwtDomainError);
 app.use(domainError);

@@ -61,8 +61,19 @@ const getSellers = async () => User.findAll(
   { where: { role: 'seller' }, attributes: ['id', 'name'] },
   );
 
+const remove = async (id) => {
+  const user = await User.findByPk(id);
+
+  if (!user) {
+    throw AppError('notFound', 'User not exists');
+  }
+
+  await user.destroy();
+};
+
 module.exports = {
   createUser,
   login,
   getSellers,
+  remove,
 };

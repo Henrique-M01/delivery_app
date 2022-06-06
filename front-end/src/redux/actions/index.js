@@ -1,16 +1,34 @@
-export const ADD_ORDER = 'ADD_ORDER';
-export const SET_ORDERS = 'SET_ORDERS';
 export const SET_USER = 'SET_USER';
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_IS_LOGGED_IN = 'SET_IS_LOGGED_IN';
+export const CLEAR_CART = 'CLEAR_CART';
+export const ICREMENT_ITEM = 'ICREMENT_ITEM';
+export const DECREMENT_ITEM = 'DECREMENT_ITEM';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const ADD_ITEM = 'ADD_ITEM';
+export const SET_CART_PRODUCTS = 'SET_CART_PRODUCTS';
 
-export const setNewOrder = (payload) => ({
-  type: ADD_ORDER,
-  payload,
+export const clearShoppingCart = () => ({
+  type: CLEAR_CART,
 });
 
-export const setOrders = (payload) => ({
-  type: SET_ORDERS,
+export const incrementCartItem = (id) => ({
+  type: CLEAR_CART,
+  payload: id,
+});
+
+export const decrementCartItem = (id) => ({
+  type: CLEAR_CART,
+  payload: id,
+});
+
+export const removeCartItem = (id) => ({
+  type: CLEAR_CART,
+  payload: id,
+});
+
+export const setCartProducts = (payload) => ({
+  type: SET_CART_PRODUCTS,
   payload,
 });
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import registerUser from '../api/registerUser';
 import AppDeliveryContext from '../context/AppDeliveryContext';
@@ -11,8 +11,15 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validRegisterForm, setValidRegisterForm] = useState(false);
+  const [disable, setDisable] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const validate = validateRegister({ email, password, name });
+
+    validate ? setDisable(false) : setDisable(true);
+  }, [email, password, name])
 
   const register = () => {
     const validate = validateRegister({ name, email, password });
@@ -20,9 +27,11 @@ export default function Register() {
     if (!validate) return setValidRegisterForm(true);
 
     registerUser({ name, email, password })
-      .then(() => setIsLogged(true))
-      .then(() => navigate('/customer/products'))
-      .catch(() => setValidRegisterForm(true));
+      .then(() => {
+        setIsLogged(true)
+        navigate('/customer/products')
+      })
+      .catch((err) => setValidRegisterForm(true));
   };
 
   return (
@@ -68,6 +77,7 @@ export default function Register() {
           />
         </label>
         <button
+        disabled={ disable }
           type="submit"
           data-testid="common_register__button-register"
         >

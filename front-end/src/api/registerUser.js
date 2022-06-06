@@ -7,5 +7,4 @@ export default ({ email, password, name }) => (
     name,
     role: 'customer',
   }).then((res) => res.data)
-    .catch((err) => console.error(err))
 );

@@ -32,14 +32,14 @@ export default function LoginForm() {
     fetchLogin(credentials)
       .then((res) => localStorage.setItem('token', res.token))
       .then(() => setIsLogged(true))
-      .then(() => navigate('/home')) // Ainda n sei a rota correta;
+      .then(() => navigate('/customer/products')) // Ainda n sei a rota correta;
       .catch(() => setSucssesLogin(true));
   };
 
   const enableButton = () => {
     const validate = validateLogin({ email, password });
 
-    if (validate) setDisable(false);
+    validate ? setDisable(false) : setDisable(true);
   };
 
   return (
@@ -69,7 +69,7 @@ export default function LoginForm() {
           value={ password }
           data-testid="common_login__input-password"
           onChange={ (e) => handleChange('password', e.target.value) }
-          type="password"
+          type="text"
           id="password-input"
           placeholder="Digite sua senha"
         />

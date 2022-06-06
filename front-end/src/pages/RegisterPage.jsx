@@ -21,7 +21,7 @@ export default function Register() {
 
     registerUser({ name, email, password })
       .then(() => setIsLogged(true))
-      .then(() => navigate('/home'))
+      .then(() => navigate('/customer/products'))
       .catch(() => setValidRegisterForm(true));
   };
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function CustomerNavBar() {
+function CustomerNavBar({ userName }) {
   return (
     <nav className="flex nav-bar">
       <div className="flex group-1">
@@ -13,7 +14,7 @@ export default function CustomerNavBar() {
           Produtos
         </Link>
         <Link
-          to="/customer/products"
+          to="/customer/orders"
           className="group-1-link"
           data-testid="customer_products__element-navbar-link-orders"
         >
@@ -22,13 +23,12 @@ export default function CustomerNavBar() {
       </div>
 
       <div className="flex group-2">
-        <Link
-          to="/customer/products"
+        <h1
           className="user"
           data-testid="customer_products__element-navbar-user-full-name"
         >
-          Sicrano da Silva
-        </Link>
+          {userName}
+        </h1>
         <Link
           to="/login"
           className="logout"
@@ -40,3 +40,9 @@ export default function CustomerNavBar() {
     </nav>
   );
 }
+
+CustomerNavBar.propTypes = {
+  userName: PropTypes.string.isRequired,
+};
+
+export default CustomerNavBar;

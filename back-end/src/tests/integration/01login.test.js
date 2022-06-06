@@ -1,6 +1,5 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const shell = require('shelljs');
 
 const server = require('../../api/app');
 const {
@@ -14,14 +13,10 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-before(() => {
-  shell.exec('npm run db:reset');
-})
-
-describe('INTEGRATION TEST - Login Route - ENDPOINT /login', async () => {
+describe('INTEGRATION TEST - Login Route - ENDPOINT /login', () => {
   let response = {};
 
-  describe('1) - When Sucess', async () => {
+  describe('1) - When Sucess', () => {
     before(async () => {
       response = await chai
         .request(server)
@@ -43,8 +38,8 @@ describe('INTEGRATION TEST - Login Route - ENDPOINT /login', async () => {
     });
   });
 
-  describe('2) - When Fail', async () => {
-    describe('1) - If User doesn\'t exist', async () => {
+  describe('2) - When Fail', () => {
+    describe('1) - If User doesn\'t exist', () => {
       before(async () => {
         response = await chai
           .request(server)
@@ -66,7 +61,7 @@ describe('INTEGRATION TEST - Login Route - ENDPOINT /login', async () => {
       });
     });
 
-    describe('2) - If User exists but password is incorrect', async () => {
+    describe('2) - If User exists but password is incorrect', () => {
       before(async () => {
         response = await chai
           .request(server)
@@ -88,7 +83,7 @@ describe('INTEGRATION TEST - Login Route - ENDPOINT /login', async () => {
       });
     })
 
-    describe('3) - If body have invalid fields', async () => {
+    describe('3) - If body have invalid fields', () => {
       before(async () => {
         response = await chai
           .request(server)

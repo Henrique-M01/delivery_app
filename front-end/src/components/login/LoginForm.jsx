@@ -10,7 +10,7 @@ import validateLogin from '../../helpers/validateLogin';
 function LoginForm({ setUser, setTokenState, setIsLogged }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [sucssesLogin, setSucssesLogin] = useState(false);
+  const [successLogin, setSuccessLogin] = useState(false);
   const [disable, setDisable] = useState(true);
 
   const navigate = useNavigate();
@@ -44,16 +44,20 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
 
     const validate = validateLogin({ email, password });
 
-    if (!validate) setSucssesLogin(true);
+    if (!validate) setSuccessLogin(true);
 
     fetchLogin(credentials)
       .then((res) => {
+        const decodedToken = decodeToken(res.token);
         setTokenState(res.token);
-        setUser(decodeToken(res.token));
+        setIsLogged(true);
+        setUser(decodedToken);
+
+        if (decodedToken.role === 'customer') navigate('/customer/products');
+        if (decodedToken.role === 'seller') navigate('/seller/orders');
+        if (decodedToken.role === 'administrator') navigate('/admin/manage');
       })
-      .then(() => setIsLogged(true))
-      .then(() => navigate('/customer/products'))
-      .catch(() => setSucssesLogin(true));
+      .catch(() => setSuccessLogin(true));
   };
 
   return (
@@ -105,12 +109,12 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
       >
         Ainda não tenho conta
       </button>
-      {sucssesLogin
+      {successLogin
         && (
           <span
             data-testid="common_login__element-invalid-email"
           >
-            Email ou senha invalidos
+            Email ou senha inválidos
           </span>)}
     </form>
   );

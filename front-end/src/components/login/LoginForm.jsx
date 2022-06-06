@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import fetchLogin from '../../api/fetchLogin';
 import AppDeliveryContext from '../../context/AppDeliveryContext';
@@ -13,6 +14,12 @@ export default function LoginForm() {
   const [disable, setDisable] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+      const validate = validateLogin({ email, password });
+  
+      validate ? setDisable(false) : setDisable(true);
+  }, [email, password])
 
   const handleChange = (flag, value) => {
     if (flag === 'email') setEmail(value);
@@ -36,19 +43,12 @@ export default function LoginForm() {
       .catch(() => setSucssesLogin(true));
   };
 
-  const enableButton = () => {
-    const validate = validateLogin({ email, password });
-
-    validate ? setDisable(false) : setDisable(true);
-  };
-
   return (
     <form
       onSubmit={ (e) => {
         e.preventDefault();
         loginSubmit();
       } }
-      onChange={ enableButton }
       className="login-form"
     >
       <label htmlFor="email-input">

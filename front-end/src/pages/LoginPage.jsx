@@ -9,6 +9,7 @@ export default function LoginPage() {
       <div className="login-container">
         <img className="embreagados" src={ logo } alt="Logo" />
         <h1>Embreagados</h1>
+
         <LoginForm />
       </div>
     </div>

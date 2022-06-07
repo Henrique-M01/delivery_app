@@ -1,21 +1,34 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setCartProducts } from '../redux/actions';
+import { clearShoppingCart, setCartProducts } from '../redux/actions';
 import fetchProducts from '../api/fetchProducts';
 import Header from '../components/navbar/Header';
 import Product from '../components/products/Product';
 import '../components/products/products.css';
 
-function ProductsPage({ setProducts, reduxProducts }) {
+function ProductsPage({ setProducts, reduxProducts, clearCart }) {
   useEffect(() => {
+    console.log(reduxProducts);
+    let productsFetch;
     fetchProducts().then((products) => {
-      setProducts(products.map((product) => ({
-        ...product,
-        quantity: 0,
-      })));
+      productsFetch = products;
+      const compareState = ((reduxProducts.length === productsFetch.length)
+      && reduxProducts
+        .every(({ id, name, price, urlImage }, index) => JSON
+          .stringify({
+            id, name, price, urlImage,
+          }) === JSON
+          .stringify(productsFetch[index])));
+      if (!compareState) {
+        clearCart();
+        setProducts(productsFetch.map((product) => ({
+          ...product,
+          quantity: 0,
+        })));
+      }
     }).catch((err) => console.error(err));
-  }, [setProducts]);
+  }, [clearCart, reduxProducts, setProducts]);
   return (
     <>
       <Header />
@@ -46,6 +59,7 @@ ProductsPage.propTypes = {
       id: PropTypes.number.isRequired,
     }),
   ).isRequired,
+  clearCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -54,6 +68,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setProducts: (products) => dispatch(setCartProducts(products)),
+  clearCart: () => dispatch(clearShoppingCart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);

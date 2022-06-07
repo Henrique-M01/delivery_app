@@ -9,7 +9,6 @@ import '../components/products/products.css';
 
 function ProductsPage({ setProducts, reduxProducts, clearCart }) {
   useEffect(() => {
-    console.log(reduxProducts);
     let productsFetch;
     fetchProducts().then((products) => {
       productsFetch = products;

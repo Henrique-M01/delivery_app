@@ -8,6 +8,8 @@ import {
   incrementCartItem,
   incrementProductQtt,
   removeCartItem,
+  setCartQtt,
+  setProductQtt,
 } from '../../redux/actions';
 
 function Product({
@@ -15,7 +17,8 @@ function Product({
   incrementItem, quantity,
   addItem, removeItem, cartItems,
   incrementProduct, decrementItem,
-  decrementProduct,
+  decrementProduct, setProductQt,
+  setCartQt,
 }) {
   const handleIncrementClick = () => {
     if (cartItems.some((el) => el.id === id)) {
@@ -37,6 +40,20 @@ function Product({
     }
   };
 
+  const handleChange = ({ target: { value } }) => {
+    if (+value > 0) {
+      if (!cartItems.some((el) => el.id === id)) {
+        addItem({ id, name, image, price, quantity: 1 });
+      }
+      setProductQt(id, +value);
+      setCartQt(id, +value);
+    } else {
+      setProductQt(id, 0);
+      setCartQt(id, 0);
+      removeItem(id);
+    }
+  };
+
   return (
     <div className="product" id={ id }>
       <span className="product-price">
@@ -54,7 +71,13 @@ function Product({
           >
             -
           </button>
-          <input type="text" className="card-input" placeholder={ quantity } />
+          <input
+            type="text"
+            className="card-input"
+            placeholder={ quantity }
+            value={ quantity }
+            onChange={ handleChange }
+          />
           <button
             type="button"
             className="button-right"
@@ -69,22 +92,24 @@ function Product({
 }
 
 Product.propTypes = {
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  incrementItem: PropTypes.func.isRequired,
-  quantity: PropTypes.number.isRequired,
   addItem: PropTypes.func.isRequired,
-  removeItem: PropTypes.func.isRequired,
   cartItems: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
     }),
   ).isRequired,
-  incrementProduct: PropTypes.func.isRequired,
   decrementItem: PropTypes.func.isRequired,
   decrementProduct: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  incrementItem: PropTypes.func.isRequired,
+  incrementProduct: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  removeItem: PropTypes.func.isRequired,
+  setCartQt: PropTypes.func.isRequired,
+  setProductQt: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -94,6 +119,8 @@ const mapDispatchToProps = (dispatch) => ({
   decrementProduct: (id) => dispatch(decrementProductQtt(id)),
   addItem: (item) => dispatch(addCartItem(item)),
   removeItem: (id) => dispatch(removeCartItem(id)),
+  setProductQt: (id, qtt) => dispatch(setProductQtt(id, qtt)),
+  setCartQt: (id, qtt) => dispatch(setCartQtt(id, qtt)),
 });
 
 const mapStateToProps = (state) => ({

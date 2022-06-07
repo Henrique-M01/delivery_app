@@ -22,9 +22,12 @@
   align-items: center;
   background-color: aqua;
   border-radius: 0.3rem;
-  height: 100%;
   justify-content: center;
-  width: 34%;
+  width: 49%;
+}
+
+.stretch {
+  height: 100%;
 }
 
 .order-status h2 {
@@ -36,7 +39,7 @@
   gap: 0.2rem;
   height: 100%;
   justify-content: space-between;
-  width: 34%;
+  width: 49%;
 }
 
 .order-details span {
@@ -46,4 +49,19 @@
   height: 45%;
   justify-content: center;
   text-align: center;
+}
+
+.group-2-order {
+  flex-direction: column;
+  width: 70%;
+  gap: 0.2rem;
+}
+
+.group-2-a {
+  justify-content: space-between;
+}
+
+.address {
+  justify-content: end;
+  align-items: center;
 }

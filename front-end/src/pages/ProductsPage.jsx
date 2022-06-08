@@ -20,6 +20,7 @@ function ProductsPage() {
       setProductsState(products);
     }).catch((err) => console.error(err));
   }, []);
+
   return (
     <>
       <Header />

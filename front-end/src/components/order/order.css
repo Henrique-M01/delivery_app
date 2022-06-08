@@ -1,6 +1,6 @@
 .order-card {
   align-items: center;
-  background-color: #cccccc;
+  background-color: #ccc;
   border-radius: 0.3rem;
   gap: 1%;
   height: 85px;
@@ -53,8 +53,8 @@
 
 .group-2-order {
   flex-direction: column;
-  width: 70%;
   gap: 0.2rem;
+  width: 70%;
 }
 
 .group-2-a {
@@ -62,6 +62,6 @@
 }
 
 .address {
-  justify-content: end;
   align-items: center;
+  justify-content: end;
 }

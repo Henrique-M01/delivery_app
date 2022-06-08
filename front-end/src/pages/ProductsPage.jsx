@@ -55,11 +55,11 @@ function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
           className="total-price-button"
           data-testid="customer_products__button-cart"
         >
-          Ver Carrinho:
+          Ver Carrinho: R$
           <span data-testid="customer_products__checkout-bottom-value">
             {
-              `${totalPrice()
-                .toLocaleString('pt-BR', { style: 'currency' })}`
+              ` ${totalPrice()
+                .toFixed(2).replace('.', ',')}`
             }
           </span>
         </button>

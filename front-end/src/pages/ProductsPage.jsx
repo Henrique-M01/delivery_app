@@ -52,12 +52,15 @@ function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
         }
         <button
           type="button"
+          data-testid="customer_products__button-cart"
         >
           Ver Carrinho:
-          {
-            `${totalPrice()
-              .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`
-          }
+          <span data-testid="customer_products__checkout-bottom-value">
+            {
+              `${totalPrice()
+                .toLocaleString('pt-BR', { style: 'currency' })}`
+            }
+          </span>
         </button>
       </section>
     </>

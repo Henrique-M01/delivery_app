@@ -52,6 +52,7 @@ function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
         }
         <button
           type="button"
+          className="total-price-button"
         >
           Ver Carrinho:
           {

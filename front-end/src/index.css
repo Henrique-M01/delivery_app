@@ -38,3 +38,14 @@
   max-width: 200px;
   width: 100%;
 }
+
+.total-price-button{
+  bottom: 50px;
+  display: absolute;
+  height: 30px;
+  padding: 5px;
+  position: fixed;
+  right: 30px;
+  width: 200px;
+  font-size: 16px;
+}

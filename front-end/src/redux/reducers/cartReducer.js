@@ -6,6 +6,7 @@ import {
   ICREMENT_ITEM,
   INCRERMENT_PRODUCT_QTT,
   REMOVE_ITEM,
+  SET_CART_QTT,
   SET_CART_PRODUCTS,
   SET_PRODUCT_QTT,
 } from '../actions';
@@ -49,6 +50,8 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     return { ...state, cartItems: [] };
   case SET_PRODUCT_QTT:
     return { ...state, products: state.products.map(setQtt) };
+  case SET_CART_QTT:
+    return { ...state, cartItems: state.cartItems.map(setQtt) };
   default:
     return state;
   }

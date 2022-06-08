@@ -29,11 +29,8 @@ function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
     }).catch((err) => console.error(err));
   }, [clearCart, reduxProducts, setProducts]);
 
-  const totalPrice = () => {
-    return cartItems.reduce((total, item) => {
-      return total + item.quantity * Number(item.price);
-    }, 0);
-  }
+  const totalPrice = () => cartItems
+    .reduce((total, item) => total + item.quantity * Number(item.price), 0);
 
   return (
     <>
@@ -53,8 +50,10 @@ function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
               />
             ))
         }
-        <button>
-          Ver Carrinho: 
+        <button
+          type="button"
+        >
+          Ver Carrinho:
           {
             `${totalPrice()
               .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`
@@ -77,8 +76,8 @@ ProductsPage.propTypes = {
     PropTypes.shape({
       quantity: PropTypes.number.isRequired,
       price: PropTypes.string.isRequired,
-    })
-  )
+    }).isRequired,
+  ).isRequired,
 };
 
 const mapStateToProps = (state) => ({

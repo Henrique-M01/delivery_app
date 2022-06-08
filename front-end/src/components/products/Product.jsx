@@ -56,9 +56,9 @@ function Product({
 
   return (
     <div className="product" id={ id }>
-      <span 
+      <span
         className="product-price"
-        data-testid={`customer_products__element-card-price-${ id }`}
+        data-testid={ `customer_products__element-card-price-${id}` }
       >
         {`R$ ${price
           .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
@@ -66,13 +66,13 @@ function Product({
       <img
         src={ image }
         alt={ name }
-        data-testid={`customer_products__img-card-bg-image-${ id }`}
+        data-testid={ `customer_products__img-card-bg-image-${id}` }
       />
       <div className="footer-section">
-        <p data-testid={`customer_products__element-card-title-${ id }`}>{ name }</p>
+        <p data-testid={ `customer_products__element-card-title-${id}` }>{ name }</p>
         <div className="button-section">
           <button
-            data-testid={`customer_products__button-card-rm-item-${ id }`}
+            data-testid={ `customer_products__button-card-rm-item-${id}` }
             type="button"
             className="button-left"
             onClick={ handleDecrementClick }
@@ -80,7 +80,7 @@ function Product({
             -
           </button>
           <input
-            data-testid={`customer_products__input-card-quantity-${ id }`}
+            data-testid={ `customer_products__input-card-quantity-${id}` }
             type="text"
             className="card-input"
             placeholder={ quantity }
@@ -88,7 +88,7 @@ function Product({
             onChange={ handleChange }
           />
           <button
-            data-testid={`customer_products__button-card-add-item-${ id }`}
+            data-testid={ `customer_products__button-card-add-item-${id}` }
             type="button"
             className="button-right"
             onClick={ handleIncrementClick }

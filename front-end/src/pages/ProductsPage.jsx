@@ -7,7 +7,7 @@ import Header from '../components/navbar/Header';
 import Product from '../components/products/Product';
 import '../components/products/products.css';
 
-function ProductsPage({ setProducts, reduxProducts, clearCart }) {
+function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
   useEffect(() => {
     let productsFetch;
     fetchProducts().then((products) => {
@@ -28,6 +28,13 @@ function ProductsPage({ setProducts, reduxProducts, clearCart }) {
       }
     }).catch((err) => console.error(err));
   }, [clearCart, reduxProducts, setProducts]);
+
+  const totalPrice = () => {
+    return cartItems.reduce((total, item) => {
+      return total + item.quantity * Number(item.price);
+    }, 0);
+  }
+
   return (
     <>
       <Header />
@@ -46,6 +53,13 @@ function ProductsPage({ setProducts, reduxProducts, clearCart }) {
               />
             ))
         }
+        <button>
+          Ver Carrinho: 
+          {
+            `${totalPrice()
+              .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`
+          }
+        </button>
       </section>
     </>
   );
@@ -59,10 +73,17 @@ ProductsPage.propTypes = {
     }),
   ).isRequired,
   clearCart: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      quantity: PropTypes.number.isRequired,
+      price: PropTypes.string.isRequired,
+    })
+  )
 };
 
 const mapStateToProps = (state) => ({
   reduxProducts: state.cart.products,
+  cartItems: state.cart.cartItems,
 });
 
 const mapDispatchToProps = (dispatch) => ({

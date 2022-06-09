@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { clearShoppingCart, setCartProducts } from '../redux/actions';
 import fetchProducts from '../api/fetchProducts';
 import Header from '../components/navbar/Header';
 import Product from '../components/products/Product';
 import '../components/products/products.css';
-import { useNavigate } from 'react-router-dom';
 
 function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
   const navigate = useNavigate();

@@ -62,8 +62,7 @@ function Product({
       >
         { price
           .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-          .replace('.', ',')
-        }
+          .replace('.', ',')}
       </span>
       <img
         src={ image }

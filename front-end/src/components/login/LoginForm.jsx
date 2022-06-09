@@ -26,6 +26,7 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
   }, [email, password]);
 
   useEffect(() => {
+    localStorage.setItem('user', JSON.stringify({}));
     setUser({});
     setTokenState('');
     setIsLogged(false);

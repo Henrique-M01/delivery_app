@@ -7,7 +7,7 @@
   },
   "engineStrict": true,
   "scripts": {
-    "install": "npm i . && cd front-end npm i && cd ../back-end npm i",
+    "install": "cd front-end && npm install && cd ../back-end && npm install",
     "pm2": "./node_modules/.bin/pm2",
     "jest": "./node_modules/.bin/jest",
     "start": "./scripts/prepare-for-test.sh",

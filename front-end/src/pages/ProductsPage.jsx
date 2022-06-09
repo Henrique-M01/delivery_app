@@ -34,6 +34,7 @@ function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
 
   const totalPrice = () => cartItems
     .reduce((total, item) => total + item.quantity * Number(item.price), 0);
+  }, []);
 
   return (
     <>

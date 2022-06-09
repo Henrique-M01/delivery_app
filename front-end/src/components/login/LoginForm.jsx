@@ -26,7 +26,6 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
   }, [email, password]);
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify({}));
     setUser({});
     setTokenState('');
     setIsLogged(false);
@@ -53,12 +52,15 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
         setTokenState(res.token);
         setIsLogged(true);
         setUser(decodedToken);
+
         const userObj = {
           ...decodedToken,
           token: res.token,
         };
+
         delete userObj.iat;
         delete userObj.exp;
+
         localStorage.setItem('user', JSON.stringify(userObj));
         if (decodedToken.role === 'customer') navigate('/customer/products');
         if (decodedToken.role === 'seller') navigate('/seller/orders');

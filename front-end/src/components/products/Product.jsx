@@ -60,8 +60,10 @@ function Product({
         className="product-price"
         data-testid={ `customer_products__element-card-price-${id}` }
       >
-        {`R$ ${price
-          .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
+        { price
+          .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+          .replace('.', ',')
+        }
       </span>
       <img
         src={ image }

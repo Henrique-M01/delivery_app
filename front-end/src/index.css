@@ -38,3 +38,22 @@
   max-width: 200px;
   width: 100%;
 }
+
+.total-price-button {
+  background-color: rgb(27, 133, 71);
+  color: white;
+  border: 1px solid rgb(125, 202, 157);
+  bottom: 50px;
+  font-size: 16px;
+  height: 30px;
+  position: fixed;
+  right: 30px;
+  width: 170px;
+}
+
+.total-price-button:hover {
+  background-color: rgb(125, 202, 157);
+  border: 1px solid rgb(27, 133, 71);
+  color: white;
+  cursor: pointer;
+}

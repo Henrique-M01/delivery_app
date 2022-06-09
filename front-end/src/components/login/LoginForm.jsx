@@ -6,6 +6,7 @@ import { setNewUser, setToken, setIsLoggedIn } from '../../redux/actions';
 import decodeToken from '../../utils/decodeToken';
 import fetchLogin from '../../api/fetchLogin';
 import validateLogin from '../../helpers/validateLogin';
+// import * as jwt from 'jsonwebtoken';
 
 function LoginForm({ setUser, setTokenState, setIsLogged }) {
   const [email, setEmail] = useState('');
@@ -53,6 +54,15 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
         setIsLogged(true);
         setUser(decodedToken);
 
+        const userObj = {
+          ...decodedToken,
+          token: res.token,
+        };
+        // console.log(!!jwt.verify(res.token, 'secret_key'))
+        delete userObj.iat;
+        delete userObj.exp;
+
+        localStorage.setItem('user', JSON.stringify(userObj));
         if (decodedToken.role === 'customer') navigate('/customer/products');
         if (decodedToken.role === 'seller') navigate('/seller/orders');
         if (decodedToken.role === 'administrator') navigate('/admin/manage');
@@ -86,9 +96,10 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
           value={ password }
           data-testid="common_login__input-password"
           onChange={ (e) => handleChange('password', e.target.value) }
-          type="text"
+          type="password"
           id="password-input"
           placeholder="Digite sua senha"
+          className="password-input"
         />
       </label>
 

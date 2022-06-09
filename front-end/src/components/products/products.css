@@ -10,6 +10,7 @@
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  justify-content: center;
   width: 100%;
 }
 
@@ -71,7 +72,8 @@
 }
 
 .button-section button:hover {
-  background-color: rgba(125, 156, 192, 0.678);
+  background-color: rgba(125, 156, 192, 0.466);
+  cursor: pointer;
 }
 
 

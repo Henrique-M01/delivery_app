@@ -3,11 +3,10 @@ import './checkout.css';
 
 function CheckoutForm() {
   return (
-
-    <form className="checkout-form">
+    <form className="checkout-form flex">
       <div className="flex checkout-inputs">
-        <label htmlFor="sellers-select" className="flex">
-          P. Vendedora Responsável:
+        <label htmlFor="sellers-select" className="flex seller">
+          P. Vendedora Responsável
           <select
             name=""
             id="sellers-select"
@@ -18,7 +17,7 @@ function CheckoutForm() {
           </select>
         </label>
 
-        <label htmlFor="address-input" className="flex">
+        <label htmlFor="address-input" className="flex address">
           Endereço
           <input
             type="text"
@@ -27,7 +26,7 @@ function CheckoutForm() {
           />
         </label>
 
-        <label htmlFor="number-input" className="flex">
+        <label htmlFor="number-input" className="flex number">
           Número
           <input
             type="number"
@@ -40,6 +39,7 @@ function CheckoutForm() {
       <button
         type="submit"
         data-testid="customer_checkout__button-submit-order"
+        className="btn-checkout"
       >
         Finalizar pedido
       </button>

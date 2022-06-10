@@ -1,3 +1,61 @@
+.checkout-form {
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+  flex-direction: column;
+  font-size: 0.9rem;
+  margin: 0 auto;
+  padding-top: 0.8rem;
+  width: 85%;
+}
+
+.checkout-inputs {
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  gap: 1%;
+}
+
 .checkout-inputs label {
   flex-direction: column;
+  align-items: flex-start;
+}
+
+label.seller, label.number {
+  width: 22%;
+}
+
+label.seller select {
+  width:  100%;
+  padding: 0.5rem;
+}
+
+label.address {
+  width: 55%;
+}
+
+label.address input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+label.number input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.btn-checkout {
+  background-color: #036B52;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 0.8rem 0;
+  border:  none;
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+}
+
+.btn-checkout:hover {
+  cursor: pointer;
+  background-color: #005340;
+  transition: 150ms;
 }

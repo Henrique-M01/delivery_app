@@ -10,7 +10,8 @@ const secret = readFileSync(
     'jwt.evaluation.key',
   ), {
     encoding: 'utf-8',
-  });
+  },
+);
 
 const sign = (payload) => 
   jwt.sign(payload, secret, {

@@ -2,7 +2,15 @@ const jwt = require('jsonwebtoken');
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
 
-const secret = readFileSync(resolve(__dirname, '..', '..', 'jwt.evaluation.key'), { encoding: "utf-8" })
+const secret = readFileSync(
+  resolve(
+    __dirname,
+    '..',
+    '..',
+    'jwt.evaluation.key',
+  ), {
+    encoding: 'utf-8',
+  });
 
 const sign = (payload) => 
   jwt.sign(payload, secret, {

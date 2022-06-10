@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { clearShoppingCart, setCartProducts } from '../redux/actions';
 import fetchProducts from '../api/fetchProducts';
 import Header from '../components/navbar/Header';
@@ -8,6 +9,8 @@ import Product from '../components/products/Product';
 import '../components/products/products.css';
 
 function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
+  const navigate = useNavigate();
+
   useEffect(() => {
     let productsFetch;
     fetchProducts().then((products) => {
@@ -54,6 +57,8 @@ function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
           type="button"
           className="total-price-button"
           data-testid="customer_products__button-cart"
+          onClick={ () => navigate('/customer/checkout') }
+          disabled={ cartItems.length === 0 }
         >
           Ver Carrinho: R$
           <span data-testid="customer_products__checkout-bottom-value">

@@ -1,10 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './order.css';
 
 function OrderCard({ role, id, date, totalPrice, address, addressNumber, status }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="order-card flex">
+    <div
+      onKeyDown={ () => navigate(`/seller/orders/${id}`) }
+      onClick={ () => navigate(`/seller/orders/${id}`) }
+      role="none"
+      className="order-card flex"
+    >
       <div
         className="order-number flex"
         data-testid={ `customer_orders__element-order-${id}-ID` }

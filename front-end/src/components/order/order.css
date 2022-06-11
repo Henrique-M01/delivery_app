@@ -9,6 +9,10 @@
   width: 450px;
 }
 
+.order-card:hover {
+  cursor: pointer;
+}
+
 .order-number {
   align-items: center;
   background-color: #f0f0f0;

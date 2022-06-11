@@ -20,8 +20,20 @@ function CheckoutForm({ cartItems, userId, token }) {
       .catch((err) => console.error(err));
   }, []);
 
-  const totalPrice = () => cartItems
-    .reduce((total, item) => total + item.quantity * Number(item.price), 0);
+  function formatProducts() {
+    return cartItems
+      .map((item) => (
+        {
+          productId: item.id,
+          quantity: item.quantity,
+        }
+      ));
+  }
+
+  function totalPrice() {
+    return cartItems
+      .reduce((total, item) => total + item.quantity * Number(item.price), 0);
+  }
 
   function handleChange(flag, value) {
     if (flag === 'seller') setSellerId(value);
@@ -37,13 +49,16 @@ function CheckoutForm({ cartItems, userId, token }) {
       deliveryAddress: address,
       deliveryNumber: number,
       saleDate: Date.now(),
-      products: cartItems,
+      products: formatProducts(),
     };
 
-    console.log(newOrder, token);
-    // createSale(newOrder, token)
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.error(err));
+    createSale(newOrder, token)
+      .then((res) => {
+        alert(`Pedido #${res.id} finalizado com sucesso!`);
+        setAddress('');
+        setNumber('');
+      })
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -109,7 +124,7 @@ CheckoutForm.propTypes = {
       price: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.number.isRequired,
   token: PropTypes.string.isRequired,
 };
 

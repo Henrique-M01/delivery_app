@@ -11,14 +11,14 @@
 
 .checkout-inputs {
   align-items: center;
+  gap: 1%;
   justify-content: space-between;
   width: 90%;
-  gap: 1%;
 }
 
 .checkout-inputs label {
-  flex-direction: column;
   align-items: flex-start;
+  flex-direction: column;
 }
 
 label.seller, label.number {
@@ -26,8 +26,8 @@ label.seller, label.number {
 }
 
 label.seller select {
-  width:  100%;
   padding: 0.5rem;
+  width:  100%;
 }
 
 label.address {
@@ -35,27 +35,27 @@ label.address {
 }
 
 label.address input {
-  width: 100%;
   padding: 0.5rem;
+  width: 100%;
 }
 
 label.number input {
-  width: 100%;
   padding: 0.5rem;
+  width: 100%;
 }
 
 .btn-checkout {
   background-color: #036B52;
-  color: white;
-  padding: 0.5rem 1rem;
-  margin: 0.8rem 0;
   border:  none;
   border-radius: 0.3rem;
+  color: white;
   font-size: 1.2rem;
+  margin: 0.8rem 0;
+  padding: 0.5rem 1rem;
 }
 
 .btn-checkout:hover {
-  cursor: pointer;
   background-color: #005340;
+  cursor: pointer;
   transition: 150ms;
 }

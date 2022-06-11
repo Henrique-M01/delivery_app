@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './order.css';
 
-function OrderCard({ role }) {
+function OrderCard({ role, id, date, totalPrice, address, addressNumber, status }) {
   return (
     <div className="order-card flex">
       <div
         className="order-number flex"
-        data-testid="customer_orders__element-order-id-ID"
+        data-testid={ `customer_orders__element-order-${id}-ID` }
       >
-        Pedido 0001
+        Pedido
+        {' '}
+        { id }
       </div>
 
       {role === 'seller'
@@ -17,51 +19,63 @@ function OrderCard({ role }) {
           <div className="flex group-2-order">
             <div className="flex group-2-a">
               <div className="order-status flex">
-                <h2 data-testid="seller_orders__element-delivery-status-ID">Entregue</h2>
+                <h2
+                  data-testid={ `seller_orders__element-delivery-status-${id}` }
+                >
+                  Entregue
+                </h2>
               </div>
 
               <div className="order-details flex">
                 <span
                   className="flex"
-                  data-testid="seller_orders__element-order-date-ID"
+                  data-testid={ `seller_orders__element-order-date-${id}` }
                 >
-                  06/06/2022
+                  { date.split('T')[0] }
                 </span>
                 <span
                   className="flex"
-                  data-testid="seller_orders__element-card-price-ID"
+                  data-testid={ `seller_orders__element-card-price-${id}` }
                 >
-                  R$ 35,00
+                  R$
+                  {' '}
+                  { totalPrice }
                 </span>
               </div>
             </div>
 
             <div
               className="flex address"
-              data-testid="seller_orders__element-card-address-ID"
+              data-testid={ `seller_orders__element-card-address-${id}` }
             >
-              Rua Lorem ipsum dolor, nº 100
+              { `${address}, ${addressNumber}` }
             </div>
 
           </div>
         ) : (
           <>
             <div className="order-status flex stretch">
-              <h2 data-testid="customer_orders__element-delivery-status-ID">Entregue</h2>
+              <h2
+                data-testid={ `customer_orders__element-delivery-status-${id}` }
+              >
+                { status }
+              </h2>
             </div>
 
             <div className="order-details flex">
               <span
                 className="flex"
-                data-testid="customer_orders__element-order-date-ID"
+                data-testid={ `customer_orders__element-order-date-${id}` }
               >
-                06/06/2022
+                { date }
               </span>
               <span
                 className="flex"
-                data-testid="customer_orders__element-order-date-ID"
+                data-testid={ `customer_orders__element-order-date-${id}` }
               >
-                R$ 35,00
+                R$
+                {' '}
+                { totalPrice }
               </span>
             </div>
           </>
@@ -72,6 +86,12 @@ function OrderCard({ role }) {
 
 OrderCard.propTypes = {
   role: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
+  totalPrice: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  addressNumber: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
 };
 
 export default OrderCard;

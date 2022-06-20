@@ -1,7 +1,7 @@
 const { Sales, Product, SalesProducts } = require('../database/models');
 const { AppError } = require('../utils');
 
-const findId = async (id) => Sales.findByPk(id, { 
+const findId = async (id) => Sales.findByPk(id, {
   attributes: { exclude: ['user_id', 'seller_id'] },
   include: [{ model: Product, as: 'products' }],
 });
@@ -11,12 +11,12 @@ const create = async (data) => {
     totalPrice, deliveryAddress, deliveryNumber, saleDate, products,
   } = data;
 
-  const sale = await Sales.create({ 
+  const sale = await Sales.create({
     userId,
     sellerId,
     totalPrice,
     deliveryAddress,
-    deliveryNumber, 
+    deliveryNumber,
     saleDate,
     status: 'Pendente',
   });
@@ -30,9 +30,9 @@ const create = async (data) => {
 
 const readOne = async (id, role) => {
   const result = await Sales.findAll(
-    { 
+    {
       attributes: { exclude: ['user_id', 'seller_id'] },
-      include: [{ 
+      include: [{
         model: Product, as: 'products',
       }],
       where: { [role]: id },

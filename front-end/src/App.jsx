@@ -7,6 +7,7 @@ import OrdersPage from './pages/OrdersPage';
 import MyOrdersPage from './pages/MyOrdersPage';
 import CheckoutPage from './pages/CheckoutPage';
 import UserAdministration from './pages/UserAdministration';
+import OrderDetailsPage from './pages/OrderDetailsPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/customer/orders" element={ <MyOrdersPage /> } />
       <Route path="/seller/orders" element={ <OrdersPage /> } />
       <Route path="/admin/manage" element={ <UserAdministration /> } />
+      <Route path="/seller/orders/:id" element={ <OrderDetailsPage /> } />
     </Routes>
   );
 }

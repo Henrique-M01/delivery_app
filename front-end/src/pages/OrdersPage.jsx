@@ -5,28 +5,31 @@ import PropTypes from 'prop-types';
 import Header from '../components/navbar/Header';
 import OrderCard from '../components/order/OrderCard';
 import fetchSales from '../api/fetchSales';
+import { setOrders } from '../redux/actions';
 
-function OrdersPage({ user: { role } }) {
-  const [orders, setOrders] = useState([]);
-
+function OrdersPage({ user: { role }, orders, setOrder }) {
   const navigate = useNavigate();
+  console.log('function', setOrder);
+  console.log('array', orders);
 
   const USER = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    fetchSales(USER.id, USER.token, USER.role)
-      .then((res) => {
-        setOrders(res);
-      });
+    setOrder(['alo', 'galera', 'de', 'peao'])
+    // fetchSales(USER.id, USER.token, USER.role)
+    //   .then((res) => {
+    //     setOrder(res);
+    //   })
+    //   .catch((err) => console.log(err));
   }, []);
 
   return (
     <div>
       <Header />
-      {!orders ? <span>Loadind...</span> : orders.map((order) => (
+      {!orders ? <span>Loading...</span> : orders.map((order) => (
         <div
           key={ order.id }
-          onClick={ () => navigate(`/sales/orders/${order.id}`) }
+          onClick={ () => navigate(`/seller/orders/${order.id}`) }
         >
           <OrderCard
             role={ role }
@@ -50,7 +53,12 @@ OrdersPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  user: state.userInfo,
+    user: state.userInfo,
+    orders: state.orders,
+  });
+
+const mapDispatchToProps = (dispatch) => ({
+  setOrder: (orders) => dispatch(setOrders(orders)),
 });
 
-export default connect(mapStateToProps, null)(OrdersPage);
+export default connect(mapStateToProps, mapDispatchToProps)(OrdersPage);

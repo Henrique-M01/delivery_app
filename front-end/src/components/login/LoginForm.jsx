@@ -58,7 +58,6 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
           ...decodedToken,
           token: res.token,
         };
-        // console.log(!!jwt.verify(res.token, 'secret_key'))
         delete userObj.iat;
         delete userObj.exp;
 

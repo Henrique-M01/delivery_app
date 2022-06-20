@@ -7,26 +7,23 @@ import OrderCard from '../components/order/OrderCard';
 import fetchSales from '../api/fetchSales';
 import { setOrders } from '../redux/actions';
 
-function OrdersPage({ user: { role }, orders, setOrder }) {
+function OrdersPage({ user: { role }, orders: { order }, setOrder }) {
   const navigate = useNavigate();
-  console.log('function', setOrder);
-  console.log('array', orders);
 
   const USER = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    setOrder(['alo', 'galera', 'de', 'peao'])
-    // fetchSales(USER.id, USER.token, USER.role)
-    //   .then((res) => {
-    //     setOrder(res);
-    //   })
-    //   .catch((err) => console.log(err));
+    fetchSales(USER.id, USER.token, USER.role)
+      .then((res) => {
+        setOrder(res);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
     <div>
       <Header />
-      {!orders ? <span>Loading...</span> : orders.map((order) => (
+      {!order ? <span>Loading...</span> : order.map((order) => (
         <div
           key={ order.id }
           onClick={ () => navigate(`/seller/orders/${order.id}`) }

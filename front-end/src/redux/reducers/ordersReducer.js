@@ -1,10 +1,13 @@
 import { SET_ORDERS } from '../actions';
 
-const ordersReducer = (state = [], action) => {
-  console.log(action.type)
+const INITIAL_STATE = {
+  order: []
+}
+
+const ordersReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_ORDERS:
-      return action.payload;
+      return { ...state, order: action.payload  }
     default:
       return state;
   }

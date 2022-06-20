@@ -3,6 +3,19 @@
   src: url('/src/fonts/CollegeBlock-Mzxn.ttf');
 }
 
+html, body, div, span, applet, object, iframe,
+table, caption, tbody, tfoot, thead, tr, th, td, button {
+border: 0;
+font-family: inherit;
+font-size: 100%;
+font-style: inherit;
+font-weight: inherit;
+margin: 0;
+outline: 0;
+padding: 0;
+vertical-align: baseline;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   font-family: CollegeBlock , sans-serif;
@@ -47,7 +60,6 @@
   color: white;
   display: flex;
   float: right;
-  font-size: 16px;
   font-size: 20px;
   padding: 7px 15px;
   position: fixed;

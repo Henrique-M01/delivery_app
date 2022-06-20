@@ -1,15 +1,15 @@
-import React from 'react'
-import UserRegisterForm from '../components/admin/UserRegisterForm'
-import Header from '../components/navbar/Header'
-import '../components/admin/userAdministration.css'
+import React from 'react';
+import UserRegisterForm from '../components/admin/UserRegisterForm';
+import Header from '../components/navbar/Header';
+import '../components/admin/userAdministration.css';
 
 function UserAdministration() {
   return (
     <>
-    <Header />
-    <UserRegisterForm/>
+      <Header />
+      <UserRegisterForm />
     </>
-  )
+  );
 }
 
-export default UserAdministration
+export default UserAdministration;

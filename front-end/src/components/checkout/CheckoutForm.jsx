@@ -86,6 +86,7 @@ function CheckoutForm({ cartItems, userId, token }) {
         <label htmlFor="address-input" className="flex address">
           Endereço
           <input
+            className="address-input-field"
             type="text"
             id="address-input"
             value={ address }
@@ -97,6 +98,7 @@ function CheckoutForm({ cartItems, userId, token }) {
         <label htmlFor="number-input" className="flex number">
           Número
           <input
+            className="number-input-field"
             type="number"
             id="number-input"
             value={ number }

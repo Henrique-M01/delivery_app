@@ -6,7 +6,6 @@ import { setNewUser, setToken, setIsLoggedIn } from '../../redux/actions';
 import decodeToken from '../../utils/decodeToken';
 import fetchLogin from '../../api/fetchLogin';
 import validateLogin from '../../helpers/validateLogin';
-// import * as jwt from 'jsonwebtoken';
 
 function LoginForm({ setUser, setTokenState, setIsLogged }) {
   const [email, setEmail] = useState('');

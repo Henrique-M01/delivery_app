@@ -21,32 +21,32 @@
   flex-direction: column;
 }
 
-label.seller, label.number {
+.seller, .number-input-field {
   width: 22%;
 }
 
-label.seller select {
-  padding: 0.5rem;
-  width:  100%;
-}
-
-label.address {
-  width: 55%;
-}
-
-label.address input {
+.seller select {
   padding: 0.5rem;
   width: 100%;
 }
 
-label.number input {
+.address {
+  width: 55%;
+}
+
+.address-input-field {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.number-input-field {
   padding: 0.5rem;
   width: 100%;
 }
 
 .btn-checkout {
-  background-color: #036B52;
-  border:  none;
+  background-color: #036b52;
+  border: none;
   border-radius: 0.3rem;
   color: white;
   font-size: 1.2rem;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/navbar/Header';
@@ -9,13 +10,13 @@ function OrderDetailsPage({ orders }) {
   const ID = location.pathname.split('/')[3];
  
   const order = orders.find((order) => order.id === Number(ID));
-
+  console.log(order);
   return (
     <div>
       <Header />
       <OrderDetails
         id={ order.id }
-        date={ order.date }
+        date={ order.saleDate }
         status={ order.status }
         products={ order.products }
         totalPrice={ order.totalPrice }
@@ -25,8 +26,26 @@ function OrderDetailsPage({ orders }) {
   )
 }
 
+OrderDetailsPage.propTypes = {
+  orders: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    saleDate: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    products: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      urlImage: PropTypes.string,
+      quantity: PropTypes.number.isRequired,
+    })),
+    totalPrice: PropTypes.string.isRequired,
+  })),
+}
+
 const mapStateToProps = (state) => ({
   orders: state.orders.order,
 });
+
+
 
 export default connect(mapStateToProps)(OrderDetailsPage);

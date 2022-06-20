@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import ProductsDetails from '../products/ProductsDetail';
 
 export default function OrderDetails({ id, date, status, products, totalPrice }) {
@@ -7,7 +8,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
       <div>
         <div>
           <h2>Pedido { id }</h2>
-          <span>{ date }</span>
+          <span>{ date.split('T')[0] }</span>
           <span>{ status }</span>
           <button>Preparar pedido</button>
           <button>Saiu para entrega</button>
@@ -33,4 +34,17 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
       </div>
     </div>
   )
+}
+
+OrderDetails.propTypes = {
+  date: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  products: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
+  }),
+  status: PropTypes.string.isRequired,
+  totalPrice: PropTypes.string.isRequired,
 }

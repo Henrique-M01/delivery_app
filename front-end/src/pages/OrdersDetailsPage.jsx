@@ -1,4 +1,5 @@
-import PropTypes from "prop-types"
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/navbar/Header';
@@ -8,7 +9,7 @@ function OrderDetailsPage({ orders }) {
   const location = useLocation();
 
   const ID = location.pathname.split('/')[3];
- 
+
   const order = orders.find((order) => order.id === Number(ID));
   console.log(order);
   return (
@@ -22,8 +23,8 @@ function OrderDetailsPage({ orders }) {
         totalPrice={ order.totalPrice }
       />
     </div>
-    
-  )
+
+  );
 }
 
 OrderDetailsPage.propTypes = {
@@ -39,13 +40,11 @@ OrderDetailsPage.propTypes = {
       quantity: PropTypes.number.isRequired,
     })),
     totalPrice: PropTypes.string.isRequired,
-  })),
-}
+  })).isRequired,
+};
 
 const mapStateToProps = (state) => ({
   orders: state.orders.order,
 });
-
-
 
 export default connect(mapStateToProps)(OrderDetailsPage);

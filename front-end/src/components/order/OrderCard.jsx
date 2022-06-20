@@ -1,15 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './order.css';
+import { useNavigate } from 'react-router-dom';
 
 function OrderCard({ role, id, date, totalPrice, adrees, adreesNumber, status }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="order-card flex">
+    <div
+      className="order-card flex"
+      onClick={ () => navigate(`/seller/orders/${order.id}`) }
+      role="none"
+    >
       <div
         className="order-number flex"
-        data-testid={ `customer_orders__element-order-${ id }-ID` }
+        data-testid={ `customer_orders__element-order-${id}-ID` }
       >
-        Pedido { id }
+        Pedido
+        {' '}
+        { id }
       </div>
 
       {role === 'seller'
@@ -17,51 +26,63 @@ function OrderCard({ role, id, date, totalPrice, adrees, adreesNumber, status })
           <div className="flex group-2-order">
             <div className="flex group-2-a">
               <div className="order-status flex">
-                <h2 data-testid={ `seller_orders__element-delivery-status-${ id }` }>Entregue</h2>
+                <h2
+                  data-testid={ `seller_orders__element-delivery-status-${id}` }
+                >
+                  Entregue
+                </h2>
               </div>
 
               <div className="order-details flex">
                 <span
                   className="flex"
-                  data-testid={ `seller_orders__element-order-date-${ id }` }
+                  data-testid={ `seller_orders__element-order-date-${id}` }
                 >
                   { date.split('T')[0] }
                 </span>
                 <span
                   className="flex"
-                  data-testid={ `seller_orders__element-card-price-${ id }` }
+                  data-testid={ `seller_orders__element-card-price-${id}` }
                 >
-                  R$ { totalPrice }
+                  R$
+                  {' '}
+                  { totalPrice }
                 </span>
               </div>
             </div>
 
             <div
               className="flex address"
-              data-testid={ `seller_orders__element-card-address-${ id }` }
+              data-testid={ `seller_orders__element-card-address-${id}` }
             >
-              { `${ adrees }, ${ adreesNumber }` }
+              { `${adrees}, ${adreesNumber}` }
             </div>
 
           </div>
         ) : (
           <>
             <div className="order-status flex stretch">
-              <h2 data-testid={ `customer_orders__element-delivery-status-${ id }` }>{ status }</h2>
+              <h2
+                data-testid={ `customer_orders__element-delivery-status-${id}` }
+              >
+                { status }
+              </h2>
             </div>
 
             <div className="order-details flex">
               <span
                 className="flex"
-                data-testid={ `customer_orders__element-order-date-${ id }` }
+                data-testid={ `customer_orders__element-order-date-${id}` }
               >
                 { date }
               </span>
               <span
                 className="flex"
-                data-testid={ `customer_orders__element-order-date-${ id }` }
+                data-testid={ `customer_orders__element-order-date-${id}` }
               >
-                R$ { totalPrice }
+                R$
+                {' '}
+                { totalPrice }
               </span>
             </div>
           </>

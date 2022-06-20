@@ -6,9 +6,11 @@ import Header from '../components/navbar/Header';
 
 function CheckoutPage() {
   return (
-    <div>
+    <div className="details-container">
       <Header />
+      <p>Finalizar Pedido</p>
       <CheckoutDetails />
+      <p>Detalhes e Endereço para Entrega</p>
       <CheckoutForm />
     </div>
   );

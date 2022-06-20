@@ -104,3 +104,10 @@ tr {
   color: white;
   cursor: pointer;
 }
+
+.details-container p {
+  font-family: Open Sans , sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 2px 95px;
+}

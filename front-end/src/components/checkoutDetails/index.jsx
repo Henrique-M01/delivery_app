@@ -9,42 +9,46 @@ const CheckoutDetails = ({ cartItems, removeItem, setProductQt }) => {
     .reduce((total, item) => total + item.quantity * Number(item.price), 0);
   return (
     <div className="details-container checkout-form flex">
-      <table className="details-table">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Descrição</th>
-            <th>Quantidade</th>
-            <th>Valor Unitário</th>
-            <th>Sub-Total</th>
-            <th>RemoverItem</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            cartItems.map(({ id, name, price, quantity }, index) => (
-              <tr key={ id }>
-                <td>{ index + 1 }</td>
-                <td>{ name }</td>
-                <td>{ +quantity.toFixed(2) }</td>
-                <td>{ price }</td>
-                <td>{ (quantity * price).toFixed(2) }</td>
-                <td>
-                  <button
-                    type="button"
-                    onClick={ () => {
-                      removeItem(id);
-                      setProductQt(id, 0);
-                    } }
-                  >
-                    Remover
-                  </button>
-                </td>
+      {
+        cartItems.length > 0 && (
+          <table className="details-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+                <th>Valor Unitário</th>
+                <th>Sub-Total</th>
+                <th>RemoverItem</th>
               </tr>
-            ))
-          }
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {
+                cartItems.map(({ id, name, price, quantity }, index) => (
+                  <tr key={ id }>
+                    <td>{ index + 1 }</td>
+                    <td>{ name }</td>
+                    <td>{ +quantity.toFixed(2) }</td>
+                    <td>{ price }</td>
+                    <td>{ (quantity * price).toFixed(2) }</td>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={ () => {
+                          removeItem(id);
+                          setProductQt(id, 0);
+                        } }
+                      >
+                        Remover
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        )
+      }
       <button
         type="button"
         className="total-price-button-checkout"

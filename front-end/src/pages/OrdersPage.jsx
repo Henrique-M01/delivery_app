@@ -16,7 +16,7 @@ function OrdersPage({ user: { role } }) {
         setOrders(res);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [USER.id, USER.token]);
 
   return (
     <div>

@@ -54,7 +54,7 @@ function CheckoutForm({ cartItems, userId, token }) {
 
     createSale(newOrder, token)
       .then((res) => {
-        alert(`Pedido #${res.id} finalizado com sucesso!`);
+        console.alert(`Pedido #${res.id} finalizado com sucesso!`);
         setAddress('');
         setNumber('');
       })

@@ -18,7 +18,7 @@ function AppDeliveryProvider({ children, isLoggedIn }) {
 
   useEffect(() => {
     if (location.pathname !== '/register' && !isLoggedIn) navigate('/login');
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <AppDeliveryContext.Provider value={ VALUE }>

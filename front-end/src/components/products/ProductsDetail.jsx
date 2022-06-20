@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function ProductsDetails({ id, name, quantity, value }) {
@@ -9,7 +10,7 @@ export default function ProductsDetails({ id, name, quantity, value }) {
       <span>{ value }</span>
       <span>{ value * quantity }</span>
     </div>
-  )
+  );
 }
 
 ProductsDetails.propTypes = {
@@ -17,4 +18,4 @@ ProductsDetails.propTypes = {
   name: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
-}
+};

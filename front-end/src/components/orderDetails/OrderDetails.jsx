@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductsDetails from '../products/ProductsDetail';
+import updateStatusDelivery from '../../api/statusDelivery';
 
 export default function OrderDetails({ id, date, status, products, totalPrice }) {
+  const { token } = localStorage.getItem('user');
+
   return (
     <div>
       <h1>Detalhes do pedido</h1>
@@ -31,12 +34,14 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
           <button
             type="button"
             data-testid="seller_order_details__button-preparing-check"
+            onClick={ () => updateStatusDelivery('Preparando', id, token) }
           >
             Preparar pedido
           </button>
           <button
             data-testid="seller_order_details__button-dispatch-check"
             type="button"
+            onClick={ () => updateStatusDelivery('Em Transito', id, token) }
           >
             Saiu para entrega
           </button>

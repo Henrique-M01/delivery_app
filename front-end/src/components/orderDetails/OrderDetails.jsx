@@ -61,6 +61,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
         </div>
         <button
           type="button"
+          data-testid="seller_order_details__element-order-total-price"
         >
           Total:
           {' '}

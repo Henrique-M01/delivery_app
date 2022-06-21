@@ -22,8 +22,26 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
           </h2>
           <span>{ date.split('T')[0] }</span>
           <span>{ status }</span>
-          <button type="button">Preparar pedido</button>
-          <button type="button">Saiu para entrega</button>
+          <button
+            disabled={ statusState !== 'Pendente' }
+            type="button"
+            onClick={ () => {
+              setStatusState('Preparando');
+              updateStatusDelivery('Preparando', id, token);
+            } }
+          >
+            Preparar pedido
+          </button>
+          <button
+            disabled={ statusState !== 'Preparando' }
+            type="button"
+            onClick={ () => {
+              setStatusState('Em Transito');
+              updateStatusDelivery('Em Transito', id, token);
+            } }
+          >
+            Saiu para entrega
+          </button>
         </div>
         <div>
           <span>Item</span>

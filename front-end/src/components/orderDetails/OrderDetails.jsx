@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductsDetails from '../products/ProductsDetail';
 import updateStatusDelivery from '../../api/statusDelivery';
 
 export default function OrderDetails({ id, date, status, products, totalPrice }) {
   const { token } = JSON.parse(localStorage.getItem('user'));
+
+  const [statusState, setStatusState] = useState(status);
 
   return (
     <div>
@@ -32,18 +34,24 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
 
           </span>
           <button
-            disabled={ status !== 'Pendente' }
+            disabled={ statusState !== 'Pendente' }
             type="button"
             data-testid="seller_order_details__button-preparing-check"
-            onClick={ () => updateStatusDelivery('Preparando', id, token) }
+            onClick={ () => {
+              setStatusState('Preparando');
+              updateStatusDelivery('Preparando', id, token);
+            } }
           >
             Preparar pedido
           </button>
           <button
-            disabled={ status !== 'Preparando' }
+            disabled={ statusState !== 'Preparando' }
             data-testid="seller_order_details__button-dispatch-check"
             type="button"
-            onClick={ () => updateStatusDelivery('Em Transito', id, token) }
+            onClick={ () => {
+              setStatusState('Em Transito');
+              updateStatusDelivery('Em Transito', id, token);
+            } }
           >
             Saiu para entrega
           </button>

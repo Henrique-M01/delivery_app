@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { createSale } from '../../api/fetchSales';
 import fetchSellers from '../../api/fetchSellers';
-import './checkout.css';
+// import './checkout.css';
 
 function CheckoutForm({ cartItems, userId, token }) {
   const [sellers, setSellers] = useState([]);

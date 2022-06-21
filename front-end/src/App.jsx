@@ -19,8 +19,8 @@ function App() {
       <Route path="/customer/checkout" element={ <CheckoutPage /> } />
       <Route path="/customer/orders" element={ <MyOrdersPage /> } />
       <Route path="/seller/orders" element={ <OrdersPage /> } />
-      <Route path="/admin/manage" element={ <UserAdministration /> } />
       <Route path="/seller/orders/:id" element={ <OrderDetailsPage /> } />
+      <Route path="/admin/manage" element={ <ManagePage /> } />
     </Routes>
   );
 }

@@ -30,7 +30,7 @@ function OrderCard({ role, id, date, totalPrice, address, addressNumber, status 
                 <h2
                   data-testid={ `seller_orders__element-delivery-status-${id}` }
                 >
-                  Entregue
+                  {status}
                 </h2>
               </div>
 

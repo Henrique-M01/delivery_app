@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchSales } from '../api/fetchSales';
 import Header from '../components/navbar/Header';
 import OrderCard from '../components/order/OrderCard';
-import { fetchSales } from '../api/fetchSales';
 
 function OrdersPage({ user }) {
   const { role } = user;
@@ -12,7 +12,7 @@ function OrdersPage({ user }) {
   const USER = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    console.log('oi');
+    console.log(user);
     fetchSales(USER.id, USER.token)
       .then((res) => {
         console.log(res);

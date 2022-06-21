@@ -11,6 +11,7 @@ export const SET_IS_LOGGED_IN = 'SET_IS_LOGGED_IN';
 export const SET_PRODUCT_QTT = 'SET_PRODUCT_QTT';
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_USER = 'SET_USER';
+export const SET_ORDERS = 'SET_ORDERS';
 
 export const setProductQtt = (id, quantity) => ({
   type: SET_PRODUCT_QTT,
@@ -73,5 +74,10 @@ export const setToken = (payload) => ({
 
 export const setIsLoggedIn = (payload) => ({
   type: SET_IS_LOGGED_IN,
+  payload,
+});
+
+export const setOrders = (payload) => ({
+  type: SET_ORDERS,
   payload,
 });

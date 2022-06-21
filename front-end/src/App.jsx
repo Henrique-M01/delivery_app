@@ -6,7 +6,7 @@ import ProductsPage from './pages/ProductsPage';
 import OrdersPage from './pages/OrdersPage';
 import MyOrdersPage from './pages/MyOrdersPage';
 import CheckoutPage from './pages/CheckoutPage';
-// import UserAdministration from './pages/UserAdministration';
+import UserAdministration from './pages/UserAdministration';
 import OrderDetailsPage from './pages/OrderDetailsPage';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
       <Route path="/customer/orders" element={ <MyOrdersPage /> } />
       <Route path="/seller/orders" element={ <OrdersPage /> } />
       <Route path="/seller/orders/:id" element={ <OrderDetailsPage /> } />
-      {/* <Route path="/admin/manage" element={ <ManagePage /> } /> */}
+      <Route path="/admin/manage" element={ <UserAdministration /> } />
     </Routes>
   );
 }

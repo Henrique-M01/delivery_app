@@ -63,7 +63,7 @@ function ProductsPage({ setProducts, reduxProducts, clearCart, cartItems }) {
           Ver Carrinho: R$
           <span data-testid="customer_products__checkout-bottom-value">
             {
-              ` ${totalPrice()
+              `${totalPrice()
                 .toFixed(2).replace('.', ',')}`
             }
           </span>

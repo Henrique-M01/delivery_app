@@ -20,41 +20,10 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             {' '}
             { id }
           </h2>
-          <span
-            data-testid="seller_order_details__element-order-details-label-order-date"
-          >
-            { date.split('T')[0] }
-
-          </span>
-          <span
-            data-testid={ `
-            seller_order_details__element-order-details-label-delivery-status$` }
-          >
-            { status }
-
-          </span>
-          <button
-            disabled={ statusState !== 'Pendente' }
-            type="button"
-            data-testid="seller_order_details__button-preparing-check"
-            onClick={ () => {
-              setStatusState('Preparando');
-              updateStatusDelivery('Preparando', id, token);
-            } }
-          >
-            Preparar pedido
-          </button>
-          <button
-            disabled={ statusState !== 'Preparando' }
-            data-testid="seller_order_details__button-dispatch-check"
-            type="button"
-            onClick={ () => {
-              setStatusState('Em Transito');
-              updateStatusDelivery('Em Transito', id, token);
-            } }
-          >
-            Saiu para entrega
-          </button>
+          <span>{ date.split('T')[0] }</span>
+          <span>{ status }</span>
+          <button type="button">Preparar pedido</button>
+          <button type="button">Saiu para entrega</button>
         </div>
         <div>
           <span>Item</span>
@@ -64,7 +33,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
           <span>Sub-total</span>
         </div>
         <div>
-          {products.map((product, index) => (
+          { products.map((product) => (
             <ProductsDetails
               key={ product.id }
               index={ index }
@@ -74,10 +43,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             />
           ))}
         </div>
-        <button
-          type="button"
-          data-testid="seller_order_details__element-order-total-price"
-        >
+        <button type="button">
           Total:
           {' '}
           { totalPrice }
@@ -90,13 +56,12 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
 OrderDetails.propTypes = {
   date: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  products: PropTypes.shape({
+  products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     value: PropTypes.string.isRequired,
-    map: PropTypes.func,
-  }).isRequired,
+  }).isRequired).isRequired,
   status: PropTypes.string.isRequired,
   totalPrice: PropTypes.string.isRequired,
 };

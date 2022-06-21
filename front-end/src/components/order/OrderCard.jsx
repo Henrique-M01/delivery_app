@@ -1,16 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './order.css';
-import { useNavigate } from 'react-router-dom';
 
-function OrderCard({ role, id, date, totalPrice, adrees, adreesNumber, status }) {
+function OrderCard({ role, id, date, totalPrice, address, addressNumber, status }) {
   const navigate = useNavigate();
 
   return (
     <div
-      className="order-card flex"
+      onKeyDown={ () => navigate(`/seller/orders/${id}`) }
       onClick={ () => navigate(`/seller/orders/${id}`) }
       role="none"
+      className="order-card flex"
     >
       <div
         className="order-number flex"
@@ -55,7 +56,7 @@ function OrderCard({ role, id, date, totalPrice, adrees, adreesNumber, status })
               className="flex address"
               data-testid={ `seller_orders__element-card-address-${id}` }
             >
-              { `${adrees}, ${adreesNumber}` }
+              { `${address}, ${addressNumber}` }
             </div>
 
           </div>
@@ -96,8 +97,8 @@ OrderCard.propTypes = {
   id: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   totalPrice: PropTypes.string.isRequired,
-  adrees: PropTypes.string.isRequired,
-  adreesNumber: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  addressNumber: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
 };
 

@@ -1,56 +1,52 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchSales } from '../api/fetchSales';
 import Header from '../components/navbar/Header';
 import OrderCard from '../components/order/OrderCard';
-import fetchSales from '../api/fetchSales';
-import { setOrders } from '../redux/actions';
 
-function OrdersPage({ user: { role }, orders: { order }, setOrder }) {
+function OrdersPage({ user }) {
+  const { role } = user;
+  const [orders, setOrders] = useState([]);
+
   const USER = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    fetchSales(USER.id, USER.token, USER.role)
+    console.log(user);
+    fetchSales(USER.id, USER.token)
       .then((res) => {
-        setOrder(res);
+        console.log(res);
+        setOrders(res);
       })
-      .catch((err) => console.log(err));
-  }, [USER.id, USER.role, USER.token, setOrder]);
+      .catch((err) => console.error(err));
+  }, [USER.id, USER.token]);
 
   return (
     <div>
       <Header />
-      {!order ? <span>Loading...</span> : order.map((item) => (
-        <OrderCard
-          key={ item.id }
-          role={ role }
-          totalPrice={ item.totalPrice }
-          id={ item.id }
-          date={ item.saleDate }
-          adrees={ item.deliveryAddress }
-          adreesNumber={ item.deliveryNumber }
-          status={ item.status }
-        />
-      ))}
+
+      {orders.length === 0
+        ? <span>Loading...</span>
+        : (
+          orders.map((order) => (
+            <OrderCard
+              key={ order.id }
+              role={ role }
+              totalPrice={ order.totalPrice }
+              id={ order.id }
+              date={ order.saleDate }
+              address={ order.deliveryAddress }
+              addressNumber={ order.deliveryNumber }
+              status={ order.status }
+            />
+          )))}
     </div>
   );
 }
 
 OrdersPage.propTypes = {
-  setOrder: PropTypes.func.isRequired,
   user: PropTypes.shape({
-    role: PropTypes.string,
-  }).isRequired,
-  orders: PropTypes.shape({
-    order: PropTypes.shape({
-      id: PropTypes.string,
-      totalPrice: PropTypes.string,
-      saleDate: PropTypes.number,
-      status: PropTypes.string,
-      deliveryAddress: PropTypes.string,
-      deliveryNumber: PropTypes.string,
-      map: PropTypes.func,
-    }).isRequired,
+    role: PropTypes.string.isRequired,
   }).isRequired,
 };
 

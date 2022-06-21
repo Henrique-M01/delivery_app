@@ -3,6 +3,19 @@
   src: url('/src/fonts/CollegeBlock-Mzxn.ttf');
 }
 
+html, body, div, span, applet, object, iframe,
+table, caption, tbody, tfoot, thead, tr, th, td, button {
+border: 0;
+font-family: inherit;
+font-size: 100%;
+font-style: inherit;
+font-weight: inherit;
+margin: 0;
+outline: 0;
+padding: 0;
+vertical-align: baseline;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   font-family: CollegeBlock , sans-serif;
@@ -20,8 +33,8 @@
 
 .btn {
   background-color: var(--black-light);
-  border: none;
   border-radius: 5px;
+  border: none;
   color: white;
   cursor: pointer;
   font-size: 1rem;
@@ -40,15 +53,19 @@
 }
 
 .total-price-button {
+  align-items: center;
   background-color: rgb(27, 133, 71);
-  color: white;
   border: 1px solid rgb(125, 202, 157);
   bottom: 50px;
-  font-size: 16px;
-  height: 30px;
+  color: white;
+  display: flex;
+  float: right;
+  font-size: 20px;
+  padding: 7px 15px;
   position: fixed;
   right: 30px;
-  width: 170px;
+  text-align: center;
+  width: auto;
 }
 
 .total-price-button:hover {

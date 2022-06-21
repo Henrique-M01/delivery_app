@@ -4,10 +4,10 @@ import LoginPage from './pages/LoginPage';
 import Register from './pages/RegisterPage';
 import ProductsPage from './pages/ProductsPage';
 import OrdersPage from './pages/OrdersPage';
-import ManagePage from './pages/ManagePage';
 import MyOrdersPage from './pages/MyOrdersPage';
 import CheckoutPage from './pages/CheckoutPage';
-import OrderDetailsPage from './pages/OrdersDetailsPage';
+import UserAdministration from './pages/UserAdministration';
+import OrderDetailsPage from './pages/OrderDetailsPage';
 
 function App() {
   return (

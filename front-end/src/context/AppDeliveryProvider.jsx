@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -17,8 +16,8 @@ function AppDeliveryProvider({ children, isLoggedIn }) {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    if (location.pathname !== '/register') navigate('/login');
-  }, []);
+    if (location.pathname !== '/register' && !isLoggedIn) navigate('/login');
+  }, [isLoggedIn, location.pathname, navigate]);
 
   return (
     <AppDeliveryContext.Provider value={ VALUE }>

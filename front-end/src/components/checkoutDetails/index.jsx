@@ -29,13 +29,46 @@ const CheckoutDetails = ({ cartItems, removeItem, setProductQt }) => {
               {
                 cartItems.map(({ id, name, price, quantity }, index) => (
                   <tr key={ id }>
-                    <td>{ index + 1 }</td>
-                    <td>{ name }</td>
-                    <td>{ +quantity.toFixed(2) }</td>
-                    <td>{ price }</td>
-                    <td>{ (quantity * price).toFixed(2) }</td>
+                    <td
+                      data-testid={
+                        `customer_checkout__element-order-table-item-number--${index}`
+                      }
+                    >
+                      { index + 1 }
+                    </td>
+                    <td
+                      data-testid={
+                        `customer_checkout__element-order-table-name--${index}`
+                      }
+                    >
+                      { name }
+                    </td>
+                    <td
+                      data-test-id={
+                        `customer_checkout__element-order-table-quantity--${index}`
+                      }
+                    >
+                      { quantity }
+                    </td>
+                    <td
+                      data-test-id={
+                        `customer_checkout__element-order-table-unit-price--${index}`
+                      }
+                    >
+                      { price }
+                    </td>
+                    <td
+                      data-test-id={
+                        `customer_checkout__element-order-table-sub-total--${index}`
+                      }
+                    >
+                      { (quantity * price).toFixed(2) }
+                    </td>
                     <td>
                       <button
+                        data-testid={
+                          `customer_checkout__element-order-table-remove--${index}`
+                        }
                         type="button"
                         onClick={ () => {
                           removeItem(id);
@@ -60,7 +93,7 @@ const CheckoutDetails = ({ cartItems, removeItem, setProductQt }) => {
         disabled={ cartItems.length === 0 }
       >
         Total: R$
-        <span data-testid="customer_products__checkout-bottom-value">
+        <span data-testid="customer_checkout__element-order-total-price">
           {
             `${totalPrice()
               .toFixed(2).replace('.', ',')}`

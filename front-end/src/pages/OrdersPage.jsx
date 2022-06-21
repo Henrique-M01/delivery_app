@@ -5,14 +5,17 @@ import Header from '../components/navbar/Header';
 import OrderCard from '../components/order/OrderCard';
 import { fetchSales } from '../api/fetchSales';
 
-function OrdersPage({ user: { role } }) {
+function OrdersPage({ user }) {
+  const { role } = user;
   const [orders, setOrders] = useState([]);
 
   const USER = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
+    console.log('oi');
     fetchSales(USER.id, USER.token)
       .then((res) => {
+        console.log(res);
         setOrders(res);
       })
       .catch((err) => console.error(err));
@@ -43,12 +46,17 @@ function OrdersPage({ user: { role } }) {
 
 OrdersPage.propTypes = {
   user: PropTypes.shape({
-    role: PropTypes.string,
+    role: PropTypes.string.isRequired,
   }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   user: state.userInfo,
+  orders: state.orders,
 });
 
-export default connect(mapStateToProps, null)(OrdersPage);
+const mapDispatchToProps = (dispatch) => ({
+  setOrder: (orders) => dispatch(setOrders(orders)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrdersPage);

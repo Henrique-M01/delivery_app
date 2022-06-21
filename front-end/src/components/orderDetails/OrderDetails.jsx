@@ -4,7 +4,7 @@ import ProductsDetails from '../products/ProductsDetail';
 import updateStatusDelivery from '../../api/statusDelivery';
 
 export default function OrderDetails({ id, date, status, products, totalPrice }) {
-  const { token } = localStorage.getItem('user');
+  const { token } = JSON.parse(localStorage.getItem('user'));
 
   return (
     <div>
@@ -32,6 +32,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
 
           </span>
           <button
+            disabled={ status !== 'Pendente' }
             type="button"
             data-testid="seller_order_details__button-preparing-check"
             onClick={ () => updateStatusDelivery('Preparando', id, token) }
@@ -39,6 +40,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             Preparar pedido
           </button>
           <button
+            disabled={ status !== 'Preparando' }
             data-testid="seller_order_details__button-dispatch-check"
             type="button"
             onClick={ () => updateStatusDelivery('Em Transito', id, token) }

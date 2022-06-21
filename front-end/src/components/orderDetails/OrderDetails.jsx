@@ -8,19 +8,34 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
       <h1>Detalhes do pedido</h1>
       <div>
         <div>
-          <h2>
+          <h2
+            data-testid="seller_order_details__element-order-details-label-order-id"
+          >
             Pedido
             {' '}
             { id }
           </h2>
-          <span>{ date.split('T')[0] }</span>
-          <span>{ status }</span>
+          <span
+            data-testid="seller_order_details__element-order-details-label-order-date"
+          >
+            { date.split('T')[0] }
+
+          </span>
+          <span
+            data-testid={ `
+            seller_order_details__element-order-details-label-delivery-status$` }
+          >
+            { status }
+
+          </span>
           <button
             type="button"
+            data-testid="seller_order_details__button-preparing-check"
           >
             Preparar pedido
           </button>
           <button
+            data-testid="seller_order_details__button-dispatch-check"
             type="button"
           >
             Saiu para entrega
@@ -34,10 +49,10 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
           <span>Sub-total</span>
         </div>
         <div>
-          {products.map((product) => (
+          {products.map((product, index) => (
             <ProductsDetails
               key={ product.id }
-              id={ product.id }
+              index={ index }
               name={ product.name }
               quantity={ product.quantity }
               value={ product.value }

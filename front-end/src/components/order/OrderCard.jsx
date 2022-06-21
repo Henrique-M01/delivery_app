@@ -9,7 +9,7 @@ function OrderCard({ role, id, date, totalPrice, adrees, adreesNumber, status })
   return (
     <div
       className="order-card flex"
-      onClick={ () => navigate(`/seller/orders/${order.id}`) }
+      onClick={ () => navigate(`/seller/orders/${id}`) }
       role="none"
     >
       <div

@@ -36,6 +36,24 @@ function OrdersPage({ user: { role }, orders: { order }, setOrder }) {
   );
 }
 
+OrdersPage.propTypes = {
+  setOrder: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    role: PropTypes.string,
+  }).isRequired,
+  orders: PropTypes.shape({
+    order: PropTypes.shape({
+      id: PropTypes.string,
+      totalPrice: PropTypes.string,
+      saleDate: PropTypes.number,
+      status: PropTypes.string,
+      deliveryAddress: PropTypes.string,
+      deliveryNumber: PropTypes.string,
+      map: PropTypes.func,
+    }).isRequired,
+  }).isRequired,
+};
+
 const mapStateToProps = (state) => ({
   user: state.userInfo,
   orders: state.orders,

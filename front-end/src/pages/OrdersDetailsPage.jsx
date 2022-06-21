@@ -10,7 +10,7 @@ function OrderDetailsPage({ orders }) {
 
   const ID = location.pathname.split('/')[3];
 
-  const order = orders.find((order) => order.id === Number(ID));
+  const order = orders.find((item) => item.id === Number(ID));
   console.log(order);
   return (
     <div>

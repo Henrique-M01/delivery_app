@@ -15,8 +15,16 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
           </h2>
           <span>{ date.split('T')[0] }</span>
           <span>{ status }</span>
-          <button>Preparar pedido</button>
-          <button>Saiu para entrega</button>
+          <button
+            type="button"
+          >
+            Preparar pedido
+          </button>
+          <button
+            type="button"
+          >
+            Saiu para entrega
+          </button>
         </div>
         <div>
           <span>Item</span>
@@ -36,7 +44,9 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             />
           ))}
         </div>
-        <button>
+        <button
+          type="button"
+        >
           Total:
           {' '}
           { totalPrice }
@@ -54,6 +64,7 @@ OrderDetails.propTypes = {
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     value: PropTypes.string.isRequired,
+    map: PropTypes.func,
   }).isRequired,
   status: PropTypes.string.isRequired,
   totalPrice: PropTypes.string.isRequired,

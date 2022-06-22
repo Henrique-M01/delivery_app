@@ -31,43 +31,43 @@ const CheckoutDetails = ({ cartItems, removeItem, setProductQt }) => {
                   <tr key={ id }>
                     <td
                       data-testid={
-                        `customer_checkout__element-order-table-item-number--${index}`
+                        `customer_checkout__element-order-table-item-number-${index}`
                       }
                     >
                       { index + 1 }
                     </td>
                     <td
                       data-testid={
-                        `customer_checkout__element-order-table-name--${index}`
+                        `customer_checkout__element-order-table-name-${index}`
                       }
                     >
                       { name }
                     </td>
                     <td
-                      data-test-id={
-                        `customer_checkout__element-order-table-quantity--${index}`
+                      data-testid={
+                        `customer_checkout__element-order-table-quantity-${index}`
                       }
                     >
                       { quantity }
                     </td>
                     <td
-                      data-test-id={
-                        `customer_checkout__element-order-table-unit-price--${index}`
+                      data-testid={
+                        `customer_checkout__element-order-table-unit-price-${index}`
                       }
                     >
-                      { price }
+                      { price.replace('.', ',') }
                     </td>
                     <td
-                      data-test-id={
-                        `customer_checkout__element-order-table-sub-total--${index}`
+                      data-testid={
+                        `customer_checkout__element-order-table-sub-total-${index}`
                       }
                     >
-                      { (quantity * price).toFixed(2) }
+                      { (quantity * price).toFixed(2).replace('.', ',') }
                     </td>
                     <td>
                       <button
                         data-testid={
-                          `customer_checkout__element-order-table-remove--${index}`
+                          `customer_checkout__element-order-table-remove-${index}`
                         }
                         type="button"
                         onClick={ () => {

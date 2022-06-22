@@ -8,6 +8,7 @@ import MyOrdersPage from './pages/MyOrdersPage';
 import CheckoutPage from './pages/CheckoutPage';
 import UserAdministration from './pages/UserAdministration';
 import OrderDetailsPage from './pages/OrderDetailsPage';
+import MyOrderDetailPage from './pages/MyOrderDetailPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/customer/products" element={ <ProductsPage /> } />
       <Route path="/customer/checkout" element={ <CheckoutPage /> } />
       <Route path="/customer/orders" element={ <MyOrdersPage /> } />
+      <Route path="/customer/orders/:id" element={ <MyOrderDetailPage /> } />
       <Route path="/seller/orders" element={ <OrdersPage /> } />
       <Route path="/seller/orders/:id" element={ <OrderDetailsPage /> } />
       <Route path="/admin/manage" element={ <UserAdministration /> } />

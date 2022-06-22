@@ -12,10 +12,8 @@ function OrdersPage({ user }) {
   const USER = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    console.log(user);
     fetchSales(USER.id, USER.token)
       .then((res) => {
-        console.log(res);
         setOrders(res);
       })
       .catch((err) => console.error(err));

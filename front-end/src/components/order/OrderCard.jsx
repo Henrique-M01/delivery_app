@@ -8,13 +8,24 @@ function OrderCard({ role, id, date, totalPrice, address, addressNumber, status 
 
   return (
     <div
-      onClick={ () => navigate(`/seller/orders/${id}`) }
+      onKeyDown={ () => {
+        if (role === 'seller') return navigate(`/seller/orders/${id}`);
+        return navigate(`/customer/orders/${id}`);
+      } }
+      onClick={ () => {
+        if (role === 'seller') return navigate(`/seller/orders/${id}`);
+        return navigate(`/customer/orders/${id}`);
+      } }
       role="none"
       className="order-card flex"
     >
       <div
         className="order-number flex"
-        data-testid={ `customer_orders__element-order-${id}-ID` }
+        data-testid={
+          role === 'seller'
+            ? `seller_orders__element-order-id-${id}`
+            : `customer_orders__element-order-id-${id}`
+        }
       >
         Pedido
         {' '}

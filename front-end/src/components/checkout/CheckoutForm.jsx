@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { createSale } from '../../api/fetchSales';
 import fetchSellers from '../../api/fetchSellers';
 // import './checkout.css';
@@ -10,6 +11,8 @@ function CheckoutForm({ cartItems, userId, token }) {
   const [sellerId, setSellerId] = useState('');
   const [address, setAddress] = useState('');
   const [number, setNumber] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchSellers()
@@ -54,9 +57,9 @@ function CheckoutForm({ cartItems, userId, token }) {
 
     createSale(newOrder, token)
       .then((res) => {
-        console.log(`Pedido #${res.id} finalizado com sucesso!`);
         setAddress('');
         setNumber('');
+        navigate(`/customer/orders/${res.id}`);
       })
       .catch((err) => console.error(err));
   }

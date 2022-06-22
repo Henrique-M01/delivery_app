@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { removeCartItem, setProductQtt } from '../../redux/actions';
-import './index.css';
+// import './index.css';
 
 const CheckoutDetails = ({ cartItems, removeItem, setProductQt }) => {
   const navigate = useNavigate();

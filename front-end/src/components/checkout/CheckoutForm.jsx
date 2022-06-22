@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createSale } from '../../api/fetchSales';
 import fetchSellers from '../../api/fetchSellers';
-import './checkout.css';
+// import './checkout.css';
 
 function CheckoutForm({ cartItems, userId, token }) {
   const [sellers, setSellers] = useState([]);

@@ -7,7 +7,8 @@ import OrdersPage from './pages/OrdersPage';
 import MyOrdersPage from './pages/MyOrdersPage';
 import CheckoutPage from './pages/CheckoutPage';
 import UserAdministration from './pages/UserAdministration';
-import OrderDetailsPage from './pages/OrderDetailsPage';
+import OrdersDetailsPage from './pages/OrdersDetailsPage';
+
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <Route path="/customer/checkout" element={ <CheckoutPage /> } />
       <Route path="/customer/orders" element={ <MyOrdersPage /> } />
       <Route path="/seller/orders" element={ <OrdersPage /> } />
-      <Route path="/seller/orders/:id" element={ <OrderDetailsPage /> } />
+      <Route path="/seller/orders/:id" element={ <OrdersDetailsPage /> } />
       <Route path="/admin/manage" element={ <UserAdministration /> } />
     </Routes>
   );

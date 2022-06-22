@@ -8,7 +8,6 @@ function OrderCard({ role, id, date, totalPrice, address, addressNumber, status 
 
   return (
     <div
-      onKeyDown={ () => navigate(`/seller/orders/${id}`) }
       onClick={ () => navigate(`/seller/orders/${id}`) }
       role="none"
       className="order-card flex"

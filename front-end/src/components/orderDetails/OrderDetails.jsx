@@ -51,7 +51,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
           <span>Sub-total</span>
         </div>
         <div>
-          { products.map((product) => (
+          { products.map((product, index) => (
             <ProductsDetails
               key={ product.id }
               index={ index }
@@ -61,7 +61,10 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             />
           ))}
         </div>
-        <button type="button">
+        <button
+          type="button"
+          data-testid="seller_order_details__element-order-total-price"
+        >
           Total:
           {' '}
           { totalPrice }

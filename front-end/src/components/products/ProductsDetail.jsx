@@ -27,7 +27,7 @@ export default function ProductsDetails({ index, name, quantity, value }) {
       <span
         data-testid={ `seller_order_details__element-order-table-sub-total-${index}` }
       >
-        { value * quantity }
+        { (value * quantity) }
       </span>
     </div>
   );

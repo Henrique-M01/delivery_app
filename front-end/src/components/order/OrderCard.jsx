@@ -10,11 +10,11 @@ function OrderCard({ role, id, date, totalPrice, address, addressNumber, status 
     <div
       onKeyDown={ () => {
         if (role === 'seller') return navigate(`/seller/orders/${id}`);
-        return navigate(`/customer/orders/${id}`);
+        return navigate(`/customer/checkout/${id}`);
       } }
       onClick={ () => {
         if (role === 'seller') return navigate(`/seller/orders/${id}`);
-        return navigate(`/customer/orders/${id}`);
+        return navigate(`/customer/checkout/${id}`);
       } }
       role="none"
       className="order-card flex"

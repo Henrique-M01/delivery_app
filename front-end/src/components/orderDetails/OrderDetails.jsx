@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductsDetails from '../products/ProductsDetail';
 import updateStatusDelivery from '../../api/statusDelivery';
+import dateFormat from '../../utils/dateFormat';
 
 export default function OrderDetails({ id, date, status, products, totalPrice }) {
   const { token } = JSON.parse(localStorage.getItem('user'));
+
+  const DATE_FORMAT = dateFormat(date);
+  console.log(DATE_FORMAT);
 
   const [statusState, setStatusState] = useState(status);
 
@@ -20,8 +24,16 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             {' '}
             { id }
           </h2>
-          <span>{ date.split('T')[0] }</span>
-          <span>{ status }</span>
+          <span
+            data-testid="seller_order_details__element-order-details-label-order-date"
+          >
+            { DATE_FORMAT }
+          </span>
+          <span
+            data-testid="seller_order_details__element-order-details-label-delivery-status"
+          >
+            { status }
+          </span>
           <button
             disabled={ statusState !== 'Pendente' }
             type="button"
@@ -29,6 +41,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
               setStatusState('Preparando');
               updateStatusDelivery('Preparando', id, token);
             } }
+            data-testid="seller_order_details__button-preparing-check"
           >
             Preparar pedido
           </button>
@@ -39,6 +52,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
               setStatusState('Em Transito');
               updateStatusDelivery('Em Transito', id, token);
             } }
+            data-testid="seller_order_details__button-dispatch-check"
           >
             Saiu para entrega
           </button>
@@ -56,8 +70,8 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
               key={ product.id }
               index={ index }
               name={ product.name }
-              quantity={ product.quantity }
-              value={ product.value }
+              quantity={ product.SalesProducts.quantity }
+              value={ product.price }
             />
           ))}
         </div>

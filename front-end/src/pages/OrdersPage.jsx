@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchSales } from '../api/fetchSales';
 import Header from '../components/navbar/Header';
-import OrderCard from '../components/order/OrderCard';
 import { setOrders } from '../redux/actions';
+import SellerOrderCard from '../components/order/SellerOrderCard';
 
-function OrdersPage({ user: { role }, orders: { order }, setOrder }) {
+function OrdersPage({ orders: { order }, setOrder }) {
   const USER = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function OrdersPage({ user: { role }, orders: { order }, setOrder }) {
         setOrder(res);
       })
       .catch((err) => console.error(err));
-  }, [USER.id, USER.token, USER.role , setOrder]);
+  }, [USER.id, USER.token, USER.role, setOrder]);
 
   return (
     <div>
@@ -25,9 +25,8 @@ function OrdersPage({ user: { role }, orders: { order }, setOrder }) {
         ? <span>Loading...</span>
         : (
           order.map((item) => (
-            <OrderCard
+            <SellerOrderCard
               key={ item.id }
-              role={ role }
               totalPrice={ item.totalPrice }
               id={ item.id }
               date={ item.saleDate }
@@ -42,9 +41,6 @@ function OrdersPage({ user: { role }, orders: { order }, setOrder }) {
 
 OrdersPage.propTypes = {
   setOrder: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    role: PropTypes.string,
-  }).isRequired,
   orders: PropTypes.shape({
     order: PropTypes.shape({
       id: PropTypes.string,

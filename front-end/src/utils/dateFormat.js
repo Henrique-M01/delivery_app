@@ -4,6 +4,6 @@ export default function dateFormat(date) {
   const year = dateEnSplit[0];
   const month = dateEnSplit[1];
   const day = dateEnSplit[2];
-  const dateFormat = [day, month, year].join();
-  return dateFormat.replace(',', '/');
+  const formattedDate = [day, month, year].join();
+  return formattedDate.replaceAll(',', '/');
 }

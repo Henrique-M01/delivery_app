@@ -8,8 +8,8 @@ function CustomerOrderCard({ id, date, totalPrice, status }) {
 
   return (
     <div
-      onKeyDown={ () => navigate(`/customer/checkout/${id}`) }
-      onClick={ () => navigate(`/customer/checkout/${id}`) }
+      onKeyDown={ () => navigate(`/customer/orders/${id}`) }
+      onClick={ () => navigate(`/customer/orders/${id}`) }
       role="none"
       className="order-card flex"
     >

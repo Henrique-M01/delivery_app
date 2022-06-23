@@ -17,7 +17,7 @@ function MyOrdersPage({ token, setOrderList, orderList: { order } }) {
     <div>
       <Header />
 
-      {order.map((item) => (
+      {!order ? 'loading' : order.map((item) => (
         <CustomerOrderCard
           key={ item.id }
           id={ item.id }

@@ -29,7 +29,8 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             { DATE_FORMAT }
           </span>
           <span
-            data-testid="seller_order_details__element-order-details-label-delivery-status"
+            data-testid={ `seller_order_details__element-
+            order-details-label-delivery-status` }
           >
             { status }
           </span>

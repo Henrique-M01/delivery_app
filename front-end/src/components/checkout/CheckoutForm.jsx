@@ -54,9 +54,10 @@ function CheckoutForm({ cartItems, userId, token }) {
       saleDate: Date.now(),
       products: formatProducts(),
     };
-
+    console.log(newOrder);
     createSale(newOrder, token)
       .then((res) => {
+        // console.log(res);
         setAddress('');
         setNumber('');
         navigate(`/customer/orders/${res.id}`);

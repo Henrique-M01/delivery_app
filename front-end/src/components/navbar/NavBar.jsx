@@ -35,6 +35,7 @@ export default function NavBar({ userRole, userName }) {
           to="/login"
           className="logout"
           data-testid="customer_products__element-navbar-link-logout"
+          onClick={ () => localStorage.removeItem('user') }
         >
           Sair
         </Link>

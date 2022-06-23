@@ -8,7 +8,6 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
   const { token } = JSON.parse(localStorage.getItem('user'));
 
   const DATE_FORMAT = dateFormat(date);
-  console.log(DATE_FORMAT);
 
   const [statusState, setStatusState] = useState(status);
 
@@ -49,8 +48,8 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             disabled={ statusState !== 'Preparando' }
             type="button"
             onClick={ () => {
-              setStatusState('Em Transito');
-              updateStatusDelivery('Em Transito', id, token);
+              setStatusState('Em Trânsito');
+              updateStatusDelivery('Em Trânsito', id, token);
             } }
             data-testid="seller_order_details__button-dispatch-check"
           >
@@ -79,9 +78,7 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
           type="button"
           data-testid="seller_order_details__element-order-total-price"
         >
-          Total:
-          {' '}
-          { totalPrice }
+          { totalPrice.replace('.', ',') }
         </button>
       </div>
     </div>

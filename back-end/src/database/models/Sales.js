@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       foreinKey: true,
     },
-    totalPrice: DataTypes.DECIMAL(9,2),
+    totalPrice: DataTypes.DECIMAL(9, 2),
     deliveryAddress: DataTypes.STRING,
     deliveryNumber: DataTypes.STRING,
     saleDate: DataTypes.DATE,
@@ -26,16 +26,14 @@ module.exports = (sequelize, DataTypes) => {
         as: 'user',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
-      },
-    );
+      });
         Sales.belongsTo(model.User,
       {
         foreignKey: 'seller_id',
         as: 'seller',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
-      },
-    );
+      });
   };
 
   return Sales;

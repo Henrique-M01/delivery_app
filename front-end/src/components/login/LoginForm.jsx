@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setNewUser, setToken, setIsLoggedIn } from '../../redux/actions';
@@ -10,10 +10,20 @@ import validateLogin from '../../helpers/validateLogin';
 function LoginForm({ setUser, setTokenState, setIsLogged }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [sucssesLogin, setSucssesLogin] = useState(false);
+  const [successLogin, setSuccessLogin] = useState(false);
   const [disable, setDisable] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const validate = validateLogin({ email, password });
+
+    if (validate) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [email, password]);
 
   useEffect(() => {
     setUser({});
@@ -34,22 +44,28 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
 
     const validate = validateLogin({ email, password });
 
-    if (!validate) setSucssesLogin(true);
+    if (!validate) setSuccessLogin(true);
 
     fetchLogin(credentials)
       .then((res) => {
+        const decodedToken = decodeToken(res.token);
         setTokenState(res.token);
-        setUser(decodeToken(res.token));
+        setIsLogged(true);
+        setUser(decodedToken);
+
+        const userObj = {
+          ...decodedToken,
+          token: res.token,
+        };
+        delete userObj.iat;
+        delete userObj.exp;
+
+        localStorage.setItem('user', JSON.stringify(userObj));
+        if (decodedToken.role === 'customer') navigate('/customer/products');
+        if (decodedToken.role === 'seller') navigate('/seller/orders');
+        if (decodedToken.role === 'administrator') navigate('/admin/manage');
       })
-      .then(() => setIsLogged(true))
-      .then(() => navigate('/customer/products'))
-      .catch(() => setSucssesLogin(true));
-  };
-
-  const enableButton = () => {
-    const validate = validateLogin({ email, password });
-
-    if (validate) setDisable(false);
+      .catch(() => setSuccessLogin(true));
   };
 
   return (
@@ -58,7 +74,6 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
         e.preventDefault();
         loginSubmit();
       } }
-      onChange={ enableButton }
       className="login-form"
     >
       <label htmlFor="email-input">
@@ -82,12 +97,13 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
           type="password"
           id="password-input"
           placeholder="Digite sua senha"
+          className="password-input"
         />
       </label>
 
       <button
         disabled={ disable }
-        className="btn"
+        className="btn login-btn"
         type="submit"
         data-testid="common_login__button-login"
       >
@@ -101,12 +117,12 @@ function LoginForm({ setUser, setTokenState, setIsLogged }) {
       >
         Ainda não tenho conta
       </button>
-      {sucssesLogin
+      {successLogin
         && (
           <span
             data-testid="common_login__element-invalid-email"
           >
-            Email ou senha invalidos
+            Email ou senha inválidos
           </span>)}
     </form>
   );

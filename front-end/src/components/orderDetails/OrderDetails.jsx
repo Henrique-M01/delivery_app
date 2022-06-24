@@ -6,6 +6,8 @@ import dateFormat from '../../utils/dateFormat';
 
 export default function OrderDetails({ id, date, status, products, totalPrice }) {
   const { token } = JSON.parse(localStorage.getItem('user'));
+  const dataTestIdI = 'seller_order_details__element';
+  const dataTestIdII = '-order-details-label-delivery-status';
 
   const DATE_FORMAT = dateFormat(date);
 
@@ -29,7 +31,9 @@ export default function OrderDetails({ id, date, status, products, totalPrice })
             { DATE_FORMAT }
           </span>
           <span
-            data-testid={ 'seller_order_details__element-order-details-label-delivery-status' }
+            data-testid={
+              dataTestIdI + dataTestIdII
+            }
           >
             { status }
           </span>

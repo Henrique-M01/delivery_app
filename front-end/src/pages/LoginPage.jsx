@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (user) navigate('customer/products');
-  })
+  });
 
   return (
     <div className="login-page">

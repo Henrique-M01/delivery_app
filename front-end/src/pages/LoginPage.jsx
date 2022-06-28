@@ -9,7 +9,7 @@ export default function LoginPage() {
   const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    if (user) navigate('customer/products');
+    if (user) navigate('/customer/products');
   });
 
   return (

@@ -1,7 +1,7 @@
 # App de Delivery - Embreagados
 
 # Contexto
-Este projeto trata-se de um app de delivery de bebidas, desenvolvido em time utilizando metodologias ágeis
+Este projeto trata-se de um app de delivery de bebidas, Embreagados! gerenciamento de delivery para lojas de bebidas, divindo entre clientes, administrador e vendedor, total controle da empresa na sua mao!
 
 ## Técnologias usadas
 
